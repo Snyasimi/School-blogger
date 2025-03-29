@@ -1,0 +1,13 @@
+.trending{
+
+    display:flex;
+    flex-flow: row wrap;    
+    gap:1rem;
+}
+
+main{
+
+    display:flex;
+    flex-flow: row wrap;
+
+}
