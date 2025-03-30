@@ -25,4 +25,9 @@ class AuthController extends Controller
         return view('auth.register');
 
     }
+
+    public function updateDetails(Request $req){
+
+        return redirect()->back();
+    }
 }

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('testing',function(){
-    return view('users.edit');
+    return view('blogs.show');
 });
 
 

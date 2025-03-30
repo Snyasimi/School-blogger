@@ -15,11 +15,11 @@
 
         <aside>
 
-            <ul>
-                <li>Home</li>
-                <li>Settings</li>
-                <li>Profile</li>
-                <li>Bookmarks</li>
+            <ul class="side">
+                <li><a href="#" class="link">Home</a></li>
+                <li><a href="#" class="link">Settings</a></li>
+                <li><a href="#" class="link">Profile</a></li>
+                <li><a href="#" class="link">Bookmarks</a></li>
             </ul>
         
         
@@ -28,45 +28,76 @@
        
 
         <div class="blog-container">
-
-            <div class="trending">
-
-    
-                <article>
-                
-                    <h3>Blog Post Title 1</h3>
-                    <p>Summary or introduction...</p>
-                    <a href="post-1.html">Read More</a>
-        
-                </article>
-        
-                <article>
-        
-                    <h3>Blog Post Title 2</h3>
-                    <p>Summary or introduction...</p>
-                    <a href="post-2.html">Read More</a>
             
-                </article>
+            <div class="trending">
+                
+                <h2>Trending</h2>
+
+                <div class="trending-blogs">
+
+                    @foreach ($posts as $post )
+                        <article>
+                
+                            <img src="https://images-assets.nasa.gov/image/PIA23962/PIA23962~orig.jpg" alt="Blog Thumbnail" class="blog-thumbnail">
+
+                            <div class="trending-details">
+                                <h3>{{ $post->title }}</h3>
+                                <p>{{ $post->title}}</p>
+                                <a href="post-1.html">Read More</a>
+                            </div>
+
+                        </article>
+
+                    @if($loop->index == 4)
+                        @break
+                    @endif
+                
+                    @endforeach
+
+                </div>
+               
+
+               
         
             </div>
     
-            <h2>Blogs</h2>
+            <div class="other-blogs">
+
+                <h2>More content</h2>
     
-            <article>
-            
-                <h2>Blog Post Title 1</h2>
-                <p>Summary or introduction...</p>
-                <a href="post-1.html">Read More</a>
+                <div class="blogs">
+
+                    @foreach ($posts as $post )
     
-            </article>
-    
-            <article>
-    
-                <h2>Blog Post Title 2</h2>
-                <p>Summary or introduction...</p>
-                <a href="post-2.html">Read More</a>
-        
-            </article>
+                    <div class="blog-card">
+                
+                        <img src="https://images-assets.nasa.gov/image/PIA23962/PIA23962~orig.jpg" alt="Blog Thumbnail" class="blog-thumbnail">
+                
+                        <div class="blog-info">
+                
+                            <h3 class="blog-title">{{ $post->title }}</h3>
+                            <p class="blog-author">by {{ $post->creator->user->first_name}}</p>
+                            <p class="blog-summary">A short summary of the blog post goes here...</p>
+
+                            <div class="blog-controls">
+                                <a href="#">Read more</a>
+                                <form action="">
+                                    <input type="text" hidden disaled  name="blog_id" value="{{ $post->id }}">
+                                    <button type="submit">Bookmark</button>
+                                </form>
+                                <p>Likes: 44</p>
+                                
+                            </div>
+                            
+                        </div>
+                   
+                    </div>
+                
+                @endforeach
+
+                </div>
+
+            </div>
 
         </div>
 

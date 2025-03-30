@@ -13,7 +13,10 @@ class HomeFeedController extends Controller
     public function index()
     {
 	    //Hydrate home feed
-	    return view('users.homepage');
+
+        $posts = Blogs::limit(10)->get();
+
+	    return view('users.homepage')->with('posts', $posts);
     }
 
     /**
@@ -21,7 +24,7 @@ class HomeFeedController extends Controller
      */
     public function create()
     {
-        //
+       // return view('blogs.create');
     }
 
     /**

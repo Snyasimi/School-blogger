@@ -11,7 +11,7 @@ class Blogs extends Model
 
     public function creator(){
 
-        return $this->hasOne(Authors::class,'user_id');
+        return $this->belongsTo(Authors::class,'author_id');
 
     }
 

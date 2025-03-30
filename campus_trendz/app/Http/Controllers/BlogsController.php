@@ -37,7 +37,7 @@ class BlogsController extends Controller
      */
     public function show(Blogs $blogs)
     {
-        //
+        return view('blogs.show');
     }
 
     /**
@@ -46,6 +46,7 @@ class BlogsController extends Controller
     public function edit(Blogs $blogs)
     {
         //
+        return view('blogs.edit');
     }
 
     /**
@@ -53,7 +54,7 @@ class BlogsController extends Controller
      */
     public function update(Request $request, Blogs $blogs)
     {
-        //
+        return redirect()->back();
     }
 
     /**

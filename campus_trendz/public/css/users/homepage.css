@@ -1,13 +1,105 @@
-.trending{
 
-    display:flex;
-    flex-flow: row wrap;    
-    gap:1rem;
+img{
+    width:100%;
 }
+
 
 main{
 
     display:flex;
     flex-flow: row wrap;
 
+}
+
+aside{
+    min-width:20%;
+    border-right:1px solid grey;
+
+}
+
+aside > ul{
+    padding: 0;
+}
+
+.link{
+    display: block;
+    padding:1rem;
+    text-decoration: none;
+    color:grey;
+    border-bottom: 1px solid black;
+  
+}
+.link:hover{
+    background-color: grey;
+    border-radius: .5rem;
+    color:white;
+}
+
+.trending{
+
+    display:flex;
+    flex-flow:wrap;    
+    gap:1rem;
+    align-items: stretch;
+}
+
+.trending > *{
+    
+    
+  
+}
+
+.trending-blogs{
+
+    display:flex;
+    flex-flow:row wrap;    
+    gap:.5rem;
+    align-items: stretch;
+}
+.trending-blogs > *{
+    flex:1;
+   
+
+}
+.trending-blogs > article{
+    displady: grid;
+    grid-tedmplate-columns: repeat(2,1fr);
+}
+
+
+
+
+.blog-container{
+
+    flex:2;
+    padding:1rem;
+    
+
+}
+
+
+.blog-card{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap:1rem;
+    border: 1px solid rgb(75, 69, 69);
+    padding:.2rem;
+    background-color: rgb(187, 187, 187);
+    border-radius: .5rem;
+}
+.blog-controls{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.blog-controls > * {
+
+    flex:1;
+}
+
+.blogs{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:1rem;
+    align-items: center;
 }
