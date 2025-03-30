@@ -2,6 +2,13 @@
 
 @section('title','Sign up page')
 
+
+@push('stylesheet')
+
+<link href="{{ asset('/css/users/signup.css') }}" rel="stylesheet">
+
+@endpush
+
 @section('main')
 
 <form action="#" method="POST">

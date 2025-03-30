@@ -19,6 +19,18 @@
 
         <aside>
 
+            <aside>
+
+                <ul>
+                    <li>Home</li>
+                    <li>Settings</li>
+                    <li>Profile</li>
+                    <li>Bookmarks</li>
+                </ul>
+            
+            
+            </aside>
+            
         </aside>
 
         @yield('main-content')

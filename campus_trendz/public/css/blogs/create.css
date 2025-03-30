@@ -1,0 +1,53 @@
+main{
+    display: flex;
+}
+
+main >*:nth-child(2){
+    flex:2;
+    border:2px solid black;
+}
+
+.blog-form{
+    display: flex;
+    flex-flow: column wrap;
+    gap:1rem;
+    padding:1rem;
+}
+
+.blog-form > * {
+    display: block;
+}
+
+.form-group{
+    min-width: 100%;
+}
+
+.form-group > *{
+    min-width: 100%;
+    display: block;
+}
+ 
+.form-group > input{
+    line-height: 3;
+}
+
+.form-group > input,textarea{
+    border-radius: .5rem;
+}
+
+.form-buttons{
+    display:flex;
+    justify-content: space-around;
+    gap:2rem;
+}
+
+.form-buttons>*{
+    flex:1;
+    line-height: 3;
+    border-radius: .5rem;;
+}
+
+select{
+    line-height: 5;
+}
+
