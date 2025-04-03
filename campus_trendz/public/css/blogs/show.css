@@ -11,6 +11,30 @@ main > *:nth-child(2){
     flex:2;
 }
 
+
+aside{
+    min-width:20%;
+    border-right:1px solid grey;
+
+}
+
+aside > ul{
+    padding: 0;
+}
+
+.link{
+    display: block;
+    padding:1rem;
+    text-decoration: none;
+    color:grey;
+    border-bottom: 1px solid black;
+  
+}
+.link:hover{
+    background-color: grey;
+    border-radius: .5rem;
+    color:white;
+}
 .blog-container{
     margin: 0 auto;
     border:1px solid grey;
@@ -23,11 +47,10 @@ main > *:nth-child(2){
 .blog{
     margin: 0 auto;
     max-width: 80%;
-    border:1px solid grey;
 }
 
 .blog-display > *{ 
-    border:2px solid black;
+   
     display: flex;
     flex-flow: column wrap;
 }
@@ -36,6 +59,7 @@ main > *:nth-child(2){
     display:grid;
     grid-template-columns: repeat(2,1fr);
     line-height:5;
+
 
 
 }
@@ -50,7 +74,7 @@ main > *:nth-child(2){
 }
 .blog-info{
     flex:.5;
-    
+   
     
 }
 .blog-info > h2{
@@ -64,7 +88,7 @@ main > *:nth-child(2){
 .blog-details{
     display:grid;
     grid-template-columns: repeat(2,1fr);
-    order:2px solid black
+  
 }
 .controls{
 
@@ -74,7 +98,8 @@ main > *:nth-child(2){
 
 .controls > *{
     flex:1;
-    border:2px solid red;
+   
+    max-height:20%;
 }
 .control-buttons{
     display: flex;
@@ -84,4 +109,9 @@ main > *:nth-child(2){
 
 .control-buttons > * {
     flex:1;
+    background-color: #3D63DD;
+    color:white;
+    border-radius: .5rem;
+    line-height: 1;
+    border:none;
 }

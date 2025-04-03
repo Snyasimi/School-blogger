@@ -34,22 +34,22 @@
                     <div class="name-group">
                         <div class="input-group">
                             <label for="first-name">First Name:</label>
-                            <input type="text" id="first-name" name="first_name" required>
+                            <input type="text" id="first-name" name="first_name" value="{{ $user->first_name }}" required>
                         </div>
 
                         <div class="input-group">
                             <label for="last-name">Last Name:</label>
-                            <input type="text" id="last-name" name="last_name" required>
+                            <input type="text" id="last-name" name="last_name" required value="{{ $user->last_name }} ">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required value="{{ $user->school_email }} ">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone" value="{{ $user->phone_number }} ">
                     </div>
 
                     <div class="form-group">

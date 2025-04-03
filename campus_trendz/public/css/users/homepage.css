@@ -20,13 +20,18 @@ aside{
 aside > ul{
     padding: 0;
 }
+label{
+    font-weight: bolder;
+    padding:.5rem;
+}
 
 .link{
     display: block;
     padding:1rem;
     text-decoration: none;
     color:grey;
-    border-bottom: 1px solid black;
+    borfder-bottom: 1px solid black;
+    font-weight: bolder;
   
 }
 .link:hover{

@@ -5,6 +5,7 @@
 @push('stylesheet')
 
     <link href="{{ asset('css/blogs/create.css') }}" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.3.0/ckeditor5.css">
 
 @endpush
 
@@ -14,18 +15,17 @@
 
     <aside>
 
-        <ul>
-            <li>Home</li>
-            <li>Settings</li>
-            <li>Profile</li>
-            <li>Bookmarks</li>
-            <li>Create a post</li>
+        <ul class="side">
+            <li><a href="{{ route('home.index') }}" class="link">Home</a></li>
+            <li><a href="#" class="{{ route('users.show') }}">Settings</a></li>
+            <li><a href="#" class="link">Profile</a></li>
+            <li><a href="#" class="link">Bookmarks</a></li>
         </ul>
     
     
     </aside>
 
-    <div>
+    <div class="form-container">
         <form  class="blog-form" action="submit_blog.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title:</label>
@@ -34,7 +34,7 @@
             
             <div class="form-group">
                 <label for="content">Content:</label>
-                <textarea id="content" name="content" rows="10" required></textarea>
+                <textarea id="editor" name="content" required></textarea>
             </div>
             
             <div class="form-group">
@@ -63,6 +63,10 @@
 
 </main>
 
+<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 
+<script>
+    CKEDITOR.replace('editor');
+</script>
 @endsection
 

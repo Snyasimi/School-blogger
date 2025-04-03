@@ -36,14 +36,18 @@
                 
                 <!-- Title, Controls, and Author Info -->
                 <div class="blog-info">
-                    <h2>Blog Title</h2>
+                    <h2>{{ $blog->title }}</h2>
 
                     <div class="controls">
-                        <div>By : NAME</div>
-                        <div class="control-buttons">
+                        <div>
+                           
+                            <p>By : {{ $blog->creator->user->first_name }}</p>
+                        </div>
+                       <!--  <div class="control-buttons">
                             <button>Save</button>
                             <button>Report</button>
                             <button>Share</button>
+                       -->
                         </div>
                     </div>
                    <!--  <div class="author-card">
@@ -56,7 +60,11 @@
                 
                 <!-- Blog Content -->
                 <div class="blog-content">
-                    <p>Blog content goes here...</p>
+                    <p>{{ $blog->content }}</p>
+
+                    <p>{{ $blog->content }}</p>
+
+                    <p>{{ $blog->content }}</p>
                 </div>
                 
                 <!-- Extra Div (Can be used for comments or related posts) -->

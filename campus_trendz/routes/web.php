@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\HomeFeedController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('testing',function(){
-    return view('blogs.show');
+    return view('users.homepage');
 });
 
 
@@ -35,7 +36,7 @@ Route::get('register',[AuthController::class,'register']);
 
 
 
-Route::resource('home',HomeFeedController::class);
+Route::resource('home',HomeFeedController::class);//->name('homepage');
 Route::resource('blogs',BlogsController::class);
-
+Route::resource('user',UserController::class);
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blogs;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class BlogsController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,6 @@ class BlogsController extends Controller
     public function create()
     {
         //
-        return view('blogs.create');
     }
 
     /**
@@ -35,34 +34,33 @@ class BlogsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Blogs $blogs,$id)
+    public function show(User $user)
     {
-        $blogs = Blogs::with('creator')->where('id',$id)->first();
 
-        return view('blogs.show')->with('blog',$blogs);
+        $user = User::with(['author'])->where('id',$user->id)->first();
+        return view('users.show')-> with('user',$user);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blogs $blogs)
+    public function edit(User $user)
     {
-        //
-        return view('blogs.edit');
+        return view('users.edit')-> with('user',$user);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blogs $blogs)
+    public function update(Request $request, User $user)
     {
-        return redirect()->back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blogs $blogs)
+    public function destroy(User $user)
     {
         //
     }

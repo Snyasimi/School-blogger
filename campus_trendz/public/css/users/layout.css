@@ -4,8 +4,16 @@ nav{
     display: flex;
     align-items: center;
     border-bottom:1px solid grey;
+    border-radius: .5rem;;
     position: sticky;
     top: 0px;
+}
+nav > h2{
+    align-content: center;
+    font-size: x-large;
+    padding:.5rem;
+    color:grey;
+    font-weight: bolder;
 }
 
 nav > *{
@@ -33,6 +41,11 @@ nav > form > input{
 
 }
 
+nav > form > button{
+    border-radius: .5rem;
+    border:none;
+}
+
 body{
 
     min-height: 100dvh;
@@ -50,8 +63,6 @@ body{
 header{
 
     
-    align-content: center;
-    font-size: x-large;
-    padding:.5rem;
+    
 
 }

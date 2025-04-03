@@ -1,7 +1,37 @@
 
+aside{
+    min-width:20%;
+    border-right:1px solid grey;
+
+}
+
+aside > ul{
+    padding: 0;
+}
+label{
+    font-weight: bolder;
+    padding:.5rem;
+}
+
+.link{
+    display: block;
+    padding:1rem;
+    text-decoration: none;
+    color:grey;
+    borfder-bottom: 1px solid black;
+    font-weight: bolder;
+  
+}
+.link:hover{
+    background-color: grey;
+    border-radius: .5rem;
+    color:white;
+}
+
+
 .form-update{
     max-width: 80%;
-    border:2px dashed yellow;
+   
     padding:1rem;
     margin:0 auto;
 }
@@ -34,7 +64,7 @@ main{
 
 main >*:nth-child(2){
     flex:2;
-    border:2px solid black;
+   
 }
 .update-form{
     min-width:100%;
@@ -57,18 +87,18 @@ main >*:nth-child(2){
 
 .name-group{
     display: flex;
-    border:2px solid black;
+  
 }
 
 .input-group{
     flex:1;
     display: block;
-    border:2px solid green;
+    
     padding:1rem;
 }
 .input-group > * {
 
-    display: flex;;
+    display: flex;
 
 }
 
@@ -84,6 +114,72 @@ main >*:nth-child(2){
     flex:1;
 }
 
-input{
-    line-height:3;
+
+
+/* .update-form {
+    background: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Form Styling */
+.form-update {
+   
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.name-group {
+    display: flex;
+    justify-content: space-between;
+}
+.input-group {
+    flex: 1;
+    margin-right: 10px;
+}
+.input-group:last-child {
+    margin-right: 0;
+}
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-controls {
+    text-align: right;
+}
+.form-controls button {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-controls button:hover {
+    background: #0056b3;
 }

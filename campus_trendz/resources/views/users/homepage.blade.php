@@ -43,7 +43,7 @@
                             <div class="trending-details">
                                 <h3>{{ $post->title }}</h3>
                                 <p>{{ $post->title}}</p>
-                                <a href="post-1.html">Read More</a>
+                                <a href="{{ route('blogs.show',['blog' => $post->id]) }}">Read More</a>
                             </div>
 
                         </article>

@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function author(){
 
-        return $this->hasOne(Authors::class,'user_id');
+        return $this->hasOne(Authors::class,'id');
 
     }
 

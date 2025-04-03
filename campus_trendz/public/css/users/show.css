@@ -1,0 +1,74 @@
+
+img{
+    width:100%;
+}
+
+
+main{
+
+    display:flex;
+    flex-flow: row wrap;
+
+}
+
+aside{
+    min-width:20%;
+    border-right:1px solid grey;
+
+}
+
+aside > ul{
+    padding: 0;
+}
+label{
+    font-weight: bolder;
+    padding:.5rem;
+}
+
+.link{
+    display: block;
+    padding:1rem;
+    text-decoration: none;
+    color:grey;
+    borfder-bottom: 1px solid black;
+    font-weight: bolder;
+  
+}
+.link:hover{
+    background-color: grey;
+    border-radius: .5rem;
+    color:white;
+}
+
+.content{
+    padding:1rem;
+}
+
+.user-details{
+    color:grey;
+    
+    font-weight: bolder;
+}
+
+.user-details {
+    background: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Conditional Author Details */
+.author-details {
+    background: #eef;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    
+}
+
+.author-info h2, .user-details h2 {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
