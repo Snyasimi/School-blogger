@@ -25,30 +25,70 @@
 			</div>	
 		</section> --> --}}
 
-		<section class="flex items-center border border-black space-x-6 p-4 bg-white rounded-lg shadow-md">
-		  
-		  <!-- Section 1: Image -->
-		  <figure class="flex-1 h-full">
-		    <img src="https://images-assets.nasa.gov/image/P25-037-35/P25-037-35~orig.jpg" alt="Profile picture" class="w-full h-full object-cover rounded-lg border">
-		  </figure>
+		<section
+  id="profile-section"
+  class="flex flex-col md:flex-row items-center bg-white rounded-lg shadow-sm p-6 gap-6"
+>
+  <!-- Section 1: Image -->
+  <figure class="w-24 h-24 flex-shrink-0">
+    <img
+      src="https://images-assets.nasa.gov/image/P25-037-35/P25-037-35~orig.jpg"
+      alt="Profile picture"
+      class="w-full h-full object-cover rounded-full border border-gray-200"
+    />
+  </figure>
 
-		  <!-- Section 2: Name and nav links -->
-		  <div class="border border-black flex-5">
-		    <h2 class="text-xl font-bold text-gray-800 mb-4">Steve Solomon</h2>
+  <!-- Section 2: Name and nav links -->
+  <div class="flex-1">
+    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Steve Solomon</h2>
 
-		    <nav>
-		      <ul class="flex justify-evenly text-center space-x-6 text-blue-600 font-semibold">
-			<li class="flex-1 p-3 border border-black"><a href="#" class="block">Posts</a></li>
-			<li class="flex-1 p-3 border border-black"><a href="#" class="block">Comments</a></li>
-			<li class="flex-1 p-3 border border-black"><a href="#" class="block">Followers</a></li>
-		      </ul>
-		    </nav>
-		  </div>
+    <nav aria-label="Profile navigation">
+      <ul class="flex space-x-4">
+        <li>
+          <a
+            href="#"
+            class="text-gray-700 hover:text-blue-600 transition underline-offset-2"
+            hx-trigger="click"
+            hx-get="{{ route('user.posts.index',['user' => 1]) }}"
+            hx-swap="outerHTML"
+            hx-target="#content"
+          >
+            Posts
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-gray-700 hover:text-blue-600 transition underline-offset-2"
+            hx-trigger="click"
+            hx-get="{{ route('user.comments.index',['user' => 1]) }}"
+            hx-swap="outerHTML"
+            hx-target="#content"
+          >
+            Comments
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-gray-700 hover:text-blue-600 transition underline-offset-2"
+            hx-trigger="click"
+            hx-get=""
+            hx-swap="outerHTML"
+            hx-target="#profile-section"
+          >
+            Followers
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
 
-		</section>
 
 
-		<section id="section" class="bg-blue-50 p-3">
+
+		<section id="content" class="bg-blue-50 p-3">
 			<h2 class="font-bold text-lg mb-5">Posts</h2>
 			<x-blog.card/>
 		</section>
