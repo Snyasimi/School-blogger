@@ -21,7 +21,7 @@
     </form>
   </header>
 
-  <div class="flex flex-row flex-2">
+  <div class="flex flex-col flex-2">
   <aside class="flex-1 bg-white shadow-lg min-h-full p-4">
   <!-- Aside Header -->
   <h2 class="text-xl font-semibold text-gray-800 mb-4">Navigation</h2>

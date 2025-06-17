@@ -20,7 +20,7 @@ use App\Http\Controllers\{HomeFeedController,
 |
 */
 
-Route::get('/', [HomeFeedController::class,'index']);
+Route::get('/', [HomeFeedController::class,'index'])->name('landingPage');
 
 Route::controller(AuthController::class)->group(function(){
 
@@ -29,6 +29,8 @@ Route::controller(AuthController::class)->group(function(){
 
 	Route::get('signup','signup')->name('signUpPage');
 	Route::post('signup','register')->name('register');
+
+	Route::post('logout',[AuthController::class,'logout'])->name('logout');
 
 });
 

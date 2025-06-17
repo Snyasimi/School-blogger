@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\AuthService;
+use \Illuminate\Support\Facades\Auth;
 
-use App\Http\Requests\{SignUpRequest,LoginRequest};
+use App\Http\Requests\{SignUpRequest,LoginRequest,LogoutRequest};
 
 class AuthController extends Controller
 {
@@ -23,8 +24,27 @@ class AuthController extends Controller
 
 		return view('auth.login');
 	}
-	public function signUp(SignUpRequest $request)
+
+	public function signup()
 	{
+
+		return view('auth.signUp');
+
+	}
+
+	public function register(SignUpRequest $request)
+	{
+
+		$data = $request->validated();
+
+		$user = $this->authservice->registerNewUser($data);
+
+		if(!$user)
+		{
+			return back()->with('message','Failed to create account');
+		}
+
+		return redirect()->action([HomeFeedController::class,'index']);
 
 	}
 	
@@ -39,7 +59,7 @@ class AuthController extends Controller
 			
 			$request->session()->regenerate();
 
-			return redirect()->intended('homefeed');
+			return redirect()->intended(route('homefeed'));
 		}
 
 		return back()->withErrors([
@@ -47,6 +67,18 @@ class AuthController extends Controller
 			'email' => 'The provided credentials do not match our records.'
 
 		])->onlyInput('email');
+
+	}
+
+	public function logout(LogoutRequest $request)
+	{
+
+		
+		Auth::logout(); 
+		session()->invalidate();
+		session()->regenerateToken();
+
+		return redirect()->route('landingPage');
 
 	}
 }

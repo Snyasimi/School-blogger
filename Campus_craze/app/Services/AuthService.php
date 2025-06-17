@@ -20,4 +20,28 @@ class AuthService{
 		return null;
 
 	}
+
+	public function registerNewUser(array $userData )
+	{
+
+		
+
+		$userData['password'] = bcrypt($userData['confirm_password']);
+		unset($userData['confirm_password']);
+
+		$newUser = User::create($userData);
+
+		if($newUser){
+			Auth::login($newUser);
+			return $newUser;
+		}
+	
+		return null;
+
+	}
+
+	public function logout($user)
+	{
+		//
+	}
 }

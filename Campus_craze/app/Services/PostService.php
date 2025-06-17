@@ -37,7 +37,7 @@ class PostService {
 	public function savePost(User $user,array $postData){
 		
 		$postImagePath = $postData['image']->store('postImages','public');
-	      	$postData['image'] = $postImagePath;	
+	    $postData['image'] = $postImagePath;	
 
 		$post = $user->posts()->create($postData);
 
