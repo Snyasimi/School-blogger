@@ -1,35 +1,18 @@
-<div>
+
     <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
-</div>
+
 
 <main class="flex-4" id="main">
 
 	<article>
-{{-- <!--		<section>
-			<figure>
-				<img>
-			</figure>
 
-			<div>
-				<h2>Steve Solomon</h2>
-			
-				<div>
-					<nav>
-						<ul>	
-							<li>Posts</li>
-							<li>Comments</li>
-							<li>Followers</li>
-						</ul>
-					</nav>		
-				</div>	
-			</div>	
-		</section> --> --}}
+    <section
+    id="profile-section"
+    class="flex flex-col md:flex-row items-center bg-white rounded-lg shadow-sm p-6 gap-6"
 
-		<section
-  id="profile-section"
-  class="flex flex-col md:flex-row items-center bg-white rounded-lg shadow-sm p-6 gap-6"
->
+    >
   <!-- Section 1: Image -->
+  
   <figure class="w-24 h-24 flex-shrink-0">
     <img
       src="https://images-assets.nasa.gov/image/P25-037-35/P25-037-35~orig.jpg"
@@ -40,16 +23,22 @@
 
   <!-- Section 2: Name and nav links -->
   <div class="flex-1">
-    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Steve Solomon</h2>
+    <div>
+
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">{{ $user->username }}</h2>
+      <p>{{$user->campus}}</p>
+
+    </div>
+
 
     <nav aria-label="Profile navigation">
       <ul class="flex space-x-4">
         <li>
           <a
             href="#"
-            class="text-gray-700 hover:text-blue-600 transition underline-offset-2"
+            class="text-gray-700 hover:text-blue-600 transition underline-offset-2 flex-1"
             hx-trigger="click"
-            hx-get="{{ route('user.posts.index',['user' => 1]) }}"
+            hx-get="{{ route('user.posts.index',['user' => $user->id]) }}"
             hx-swap="outerHTML"
             hx-target="#content"
           >
@@ -59,9 +48,9 @@
         <li>
           <a
             href="#"
-            class="text-gray-700 hover:text-blue-600 transition underline-offset-2"
+            class="text-gray-700 hover:text-blue-600 transition underline-offset-2 flex-1"
             hx-trigger="click"
-            hx-get="{{ route('user.comments.index',['user' => 1]) }}"
+            hx-get="{{ route('user.comments.index',['user' => $user->id ]) }}"
             hx-swap="outerHTML"
             hx-target="#content"
           >
@@ -71,7 +60,7 @@
         <li>
           <a
             href="#"
-            class="text-gray-700 hover:text-blue-600 transition underline-offset-2"
+            class="text-gray-700 hover:text-blue-600 transition underline-offset-2 flex-1"
             hx-trigger="click"
             hx-get=""
             hx-swap="outerHTML"
@@ -88,9 +77,17 @@
 
 
 
-		<section id="content" class="bg-blue-50 p-3">
-			<h2 class="font-bold text-lg mb-5">Posts</h2>
-			<x-blog.card/>
+		<section id="content" class="bg-blue-50 p-4">
+			<h2 class="font-bold text-2xl mb-5 text-center">{{ $user->username."'s posts" }}</h2>
+			<div class="grid md:grid-cols-3 gap-2 p-4">
+        @forelse($user->posts as $pst)
+            {{-- <x-blog.card :post="$pst" /> --}}
+
+            <x-blog.trending :post="$pst" />
+        @empty
+            <p class="text-gray-600 p-2">No posts available.</p>
+        @endforelse
+    </div>
 		</section>
 
 	</article>

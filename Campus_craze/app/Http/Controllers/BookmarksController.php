@@ -21,10 +21,11 @@ class BookmarksController extends Controller
 	}
 
 
-    public function index()
+    public function index(Request $request)
     {
+        $user = $request->user();
 
-	$bookmarks = $this->bookmarkservice->getBookmarks(3);
+	    $bookmarks = $this->bookmarkservice->getBookmarksBy($user);
 
         return view('Bookmarks.index',['bookmarks' => $bookmarks]);
     }
@@ -42,7 +43,20 @@ class BookmarksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $post = $request->validate([
+            'post_id' => ['required']
+        ]);
+
+        $user = $request->user();
+        $bookmark = $this->bookmarkservice->store($user,$post['post_id']);
+
+        if($bookmark){
+            return back()->with('message','Bookmark saved');
+        }
+        else {
+            return back()->with('message','Failed to bookmark');
+        }
     }
 
     /**
@@ -75,5 +89,8 @@ class BookmarksController extends Controller
     public function destroy(Bookmarks $bookmarks)
     {
         //
+        $bookmarks->delete();
+
+        return redirect()->action([BookmarksController::class,'index']);
     }
 }

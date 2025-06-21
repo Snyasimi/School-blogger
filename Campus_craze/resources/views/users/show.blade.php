@@ -1,1 +1,1 @@
-<x-user.profile/>
+<x-user.profile :user="$user"/>

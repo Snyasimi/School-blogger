@@ -21,7 +21,7 @@ class PostService {
 	public function getTrendingPosts(int $count)
 	{
 
-		$posts = Posts::with(['author'])->orderBy('likes')->take($count)->get();
+		$posts = Posts::with(['author'])->orderBy('likes','desc')->take($count)->get();
 		return $posts;
 		
 	

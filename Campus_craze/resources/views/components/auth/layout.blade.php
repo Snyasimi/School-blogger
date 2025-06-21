@@ -11,9 +11,18 @@
   @vite('resources/js/app.js')
 </head>
 
-	<body class=" flex flex-col bg-blue-50 min-h-screen"> 	
+	
+		<body class="bg-white text-gray-800 font-sans">	
 
-	<header class="text-3xl font-bold bg-white p-6">Campus Craze</header>
+			<header class="bg-blue-600 text-white shadow-md">
+				<div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+				  <h1 class="text-2xl font-bold">Campus Craze</h1>
+				  <nav class="space-x-4">
+					<a href="/" class="hover:underline">Home</a>
+					<a href="/login" class="hover:underline">Login</a>
+				  </nav>
+				</div>
+			  </header>
 
 		{{ $slot }}
 	

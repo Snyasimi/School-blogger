@@ -5,90 +5,115 @@
 
 
 	<main class="flex-2 flex flex-col justify-center">
+        <main class="min-h-screen flex items-center justify-center px-4 py-16">
+            <div class="form-container w-full max-w-xl bg-white p-8 rounded-2xl shadow-md">
+              <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">Create Your Account</h2>
+        
+              <!-- Inside your <main> section, inside the form -->
+                <form action="{{ route('register') }}" method="POST" class="space-y-6">
+                    @csrf
+                  
+                    <!-- First & Last Name -->
+                    <div class="names flex gap-4">
+                      <div class="flex-1">
+                        <label for="firstname" class="block text-sm font-medium">First Name</label>
+                        <input type="text" name="firstname" id="first_name" value="{{ old('firstname') }}"
+                          class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                        @error('firstname')
+                          <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                      </div>
+                  
+                      <div class="flex-1">
+                        <label for="lastname" class="block text-sm font-medium">Last Name</label>
+                        <input type="text" name="lastname" id="last_name" value="{{ old('lastname') }}"
+                          class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                        @error('lastname')
+                          <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                      </div>
+                    </div>
+                  
+                    <!-- Username -->
+                    <div>
+                      <label for="username" class="block text-sm font-medium">Username</label>
+                      <input type="text" name="username" id="username" value="{{ old('username') }}"
+                        class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                      @error('username')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                      @enderror
+                    </div>
+                  
+             
+                    <div>
+                      <label for="campus" class="block text-sm font-medium">Campus</label>
+                      <input type="text" name="campus" id="campus" value="{{ old('campus') }}"
+                        class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                      @error('campus')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                      @enderror
+                    </div>
 
-		<div class="w-full max-w-lg m-auto px-8 pt-6 pb-8 mb-4">
+                    <div>
+                      <label for="email" class="block text-sm font-medium">Email</label>
+                      <input type="email" name="email" id="reg_no" value="{{ old('email') }}"
+                        class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                      @error('reg_no')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                      @enderror
+                    </div>
 
-
-            <form action="{{ route('register') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                @csrf
-            
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    Username
-                    <input type="text" name="username" value="{{ old('username') }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('username')
-                        <small class="text-red-500">{{ $message }}</small>
-                    @enderror
-                </label><br>
-            
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    Firstname
-                    <input type="text" name="firstname" value="{{ old('firstname') }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('firstname')
-                        <small class="text-red-500">{{ $message }}</small>
-                    @enderror
-                </label><br>
-            
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    Lastname
-                    <input type="text" name="lastname" value="{{ old('lastname') }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('lastname')
-                        <small class="text-red-500">{{ $message }}</small>
-                    @enderror
-                </label><br>
-            
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    Campus
-                    <input type="text" name="campus" value="{{ old('campus') }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('campus')
-                        <small class="text-red-500">{{ $message }}</small>
-                    @enderror
-                </label><br>
-            
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    Phone Number
-                    <input type="text" name="phone_number" value="{{ old('phone_number') }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('phone_number')
-                        <small class="text-red-500">{{ $message }}</small>
-                    @enderror
-                </label><br>
-            
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    Email
-                    <input type="email" name="email" value="{{ old('email') }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('email')
-                        <small class="text-red-500">{{ $message }}</small>
-                    @enderror
-                </label><br>
-            
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    Password
-                    <input type="password" name="password"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('password')
-                        <small class="text-red-500">{{ $message }}</small>
-                    @enderror
-                </label><br>
-            
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    Confirm Password
-                    <input type="password" name="confirm_password"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('confirm_password')
-                        <small class="text-red-500">{{ $message }}</small>
-                    @enderror
-                </label><br>
-            
-                <button type="submit"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Register
-                </button>
-            </form>
+                    <div>
+                      <label for="reg_no" class="block text-sm font-medium">Phone Number</label>
+                      <input type="text" name="phone_number" id="reg_no" value="{{ old('phone_number') }}"
+                        class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                      @error('reg_no')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                      @enderror
+                    </div>
+                    
+                  
+                    {{--
+                    <!-- Registration Number -->
+                    <div>
+                      <label for="reg_no" class="block text-sm font-medium">Registration Number</label>
+                      <input type="text" name="reg_no" id="reg_no" value="{{ old('reg_no') }}"
+                        class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                      @error('reg_no')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                      @enderror
+                    </div>
+                    --}}
+                  
+                    <!-- Password -->
+                    <div>
+                      <label for="password" class="block text-sm font-medium">Password</label>
+                      <input type="password" name="password" id="password"
+                        class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                      @error('password')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                      @enderror
+                    </div>
+                  
+                    <!-- Confirm Password -->
+                    <div>
+                      <label for="password_confirmation" class="block text-sm font-medium">Confirm Password</label>
+                      <input type="password" name="confirm_password" id="password_confirmation"
+                        class="w-full mt-1 p-2 border rounded-md focus:ring focus:outline-none" required>
+                    </div>
+                  
+                    <!-- Submit Button -->
+                    <div class="buttons text-center">
+                      <button type="submit"
+                        class="bg-blue-600 text-white px-6 py-2 rounded-xl shadow hover:bg-blue-700 transition">
+                        Sign Up
+                      </button>
+                    </div>
+                  </form>
+                  
+        
+            </div>
+          </main>
 
 
 

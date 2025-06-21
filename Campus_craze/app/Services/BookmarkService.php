@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-use \App\Models\{Posts,Bookmarks};
+use \App\Models\{User,Posts,Bookmarks};
 
 Class BookmarkService {
 
@@ -9,14 +9,28 @@ Class BookmarkService {
 
 
 
-	public function getBookmarks(int $user_id)
+	public function getBookmarksBy(User $user)
 	{
-		$post_ids = Bookmarks::with(['user'])->where('user_id',$user_id)->pluck('post_id')->toArray();
 
-		$posts = Posts::with(['author'])->whereIn('id',$post_ids)->get();
+		$bookmarks = $user->bookmarks()->with('user')->get();
+
+		//$post_ids = Bookmarks::with(['user'])->where('user_id',$user_id)->pluck('post_id')->toArray();
+
+		//$posts = Posts::with(['author'])->whereIn('id',$post_ids)->get();
 
 
-		return $posts;
+		return $bookmarks;
+	}
+
+	public function store($user,$post_id)
+	{
+
+		$bookmark = $user->bookmarks()->create(['post_id' => $post_id]);
+
+		if($bookmark) return $bookmark;
+
+		return null;
+
 	}
 
 

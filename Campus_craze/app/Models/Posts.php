@@ -27,4 +27,8 @@ class Posts extends Model
 	
 		return \Carbon\Carbon::parse($this->created_at)->format('F j, Y');
 	}
+
+	public function bookmarks(){
+		return $this->hasMany(Bookmarks::class,'post_id');
+	}
 }

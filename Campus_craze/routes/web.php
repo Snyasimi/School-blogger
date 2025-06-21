@@ -20,7 +20,11 @@ use App\Http\Controllers\{HomeFeedController,
 |
 */
 
-Route::get('/', [HomeFeedController::class,'index'])->name('landingPage');
+//Route::get('/', [HomeFeedController::class,'index'])->name('landingPage');
+
+Route::get('/',function (){
+	return view('landingPage');
+})->name('landingPage');
 
 Route::controller(AuthController::class)->group(function(){
 

@@ -3,79 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Document</title>
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
 </head>
 <body class="flex flex-col min-h-screen bg-blue-50 text-gray-800">
-  <header class="flex items-center justify-between p-4 bg-white text-white shadow-md border border-b-gray-300 ">
-    <h1 class="text-2xl font-bold text-blue-600">Campus Craze</h1>
+  <header class=" flex items-center flex-wrap justify-between px-6 py-4 bg-blue-500 shadow-sm border-b border-gray-200 w-full">
+    <h1 class="text-2xl font-bold text-white">Campus Craze</h1>
 
-    <form method="POST" action="/logout">
-      @csrf
-      <button
-        class="bg-blue-50 text-blue-700 font-semibold py-2 px-4 rounded hover:bg-blue-500 hover:text-white transition"
-        type="submit">
-        Logout
-      </button>
-    </form>
-  </header>
+    <nav class="flex flex-wrap">
+        <ul class="flex items-center space-x-4">
+            <li>
+                <a href=""
+                   class="text-white font-medium px-3 py-2 rounded-md hover:bg-blue-600 transition"
+                   hx-trigger="click"
+                   hx-get="{{ route('blog.index') }}"
+                   hx-swap="outerHTML"
+                   hx-target="main">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href=""
+                   class="text-white font-medium px-3 py-2 rounded-md hover:bg-blue-600 transition"
+                   hx-trigger="click"
+                   hx-get="{{ route('bookmark.index') }}"
+                   hx-swap="outerHTML"
+                   hx-target="main">
+                    Bookmarks
+                </a>
+            </li>
+            <li>
+                <a href=""
+                   class="text-white font-medium px-3 py-2 rounded-md hover:bg-blue-600 transition"
+                   hx-trigger="click"
+                   hx-get="{{ route('user.show', ['user' => 1]) }}"
+                   hx-swap="outerHTML"
+                   hx-target="main">
+                    Profile
+                </a>
+            </li>
+            <li>
+                <a href=""
+                   class="text-white font-medium px-3 py-2 rounded-md hover:bg-blue-600 transition"
+                   hx-trigger="click"
+                   hx-get="{{ route('user.edit', ['user' => 1]) }}"
+                   hx-swap="outerHTML"
+                   hx-target="main">
+                    Settings
+                </a>
+            </li>
+            <li>
+                <form method="POST" action="/logout">
+                    @csrf
+                    <button
+                        class="text-white font-medium px-3 py-2 rounded-md hover:bg-red-600 transition"
+                        type="submit">
+                        Logout
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
 
   <div class="flex flex-col flex-2">
-  <aside class="flex-1 bg-white shadow-lg min-h-full p-4">
-  <!-- Aside Header -->
-  <h2 class="text-xl font-semibold text-gray-800 mb-4">Navigation</h2>
-
-  <!-- Nav Links -->
-  <nav>
-    <ul class="space-y-2">
-      <li>
-        <a href=""
-           class="block bg-blue-50 text-bold font-medium p-1 border-b-2 border-transparent rounded-md text-center hover:bg-blue-500 transition		    hover:text-white transition 
-                  hover:white transition"
-           hx-trigger="click"
-           hx-get="{{ route('blog.index') }}"
-           hx-swap="outerHTML"
-           hx-target="main">
-          Home
-        </a>
-      </li>
-      <li>
-        <a href=""
-           class="block bg-blue-50 text-bold font-medium p-1 border-b-2 border-transparent rounded-md text-center hover:bg-blue-500 transition		    hover:text-white transition 
-		  hover:white transition"           
-	   hx-trigger="click"
-           hx-get="{{ route('bookmark.index') }}"
-           hx-swap="outerHTML"
-           hx-target="main">
-          Bookmarks
-        </a>
-      </li>
-      <li>
-        <a href=""
-           class="block bg-blue-50 text-bold font-medium p-1 border-b-2 border-transparent rounded-md text-center hover:bg-blue-500 transition		    hover:text-white transition 
-		  hover:white transition"
-	    hx-trigger="click"
-           hx-get="{{ route('user.show',['user' => 1]) }}"
-           hx-swap="outerHTML"
-           hx-target="main">
-          Profile
-        </a>
-      </li>
-      <li>
-        <a href=""
-           class="block bg-blue-50 text-bold font-medium p-1 border-b-2 border-transparent rounded-md text-center hover:bg-blue-500 transition		    hover:text-white transition 
-		  hover:white transition"
-           hx-trigger="click"
-           hx-get="{{ route('user.edit',['user'=>1]) }}"
-           hx-swap="outerHTML"
-           hx-target="main">
-          Settings
-        </a>
-      </li>
-    </ul>
-  </nav>
-</aside>
+  
 
 
 
@@ -88,5 +84,13 @@
 
   <footer></footer>
 </body>
+
+<script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        event.detail.headers['X-CSRF-TOKEN'] = token;
+    });
+</script>
+
 </html>
 

@@ -4,11 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
+
+    protected $userservice;
+
+    public function __construct(UserService $userservice){
+
+        $this->userservice = $userservice;
+
+    }
     /**
      * Display a listing of the resource.
+     * 
      */
     public function index()
     {
@@ -35,9 +45,12 @@ class UserController extends Controller
      * Display the specified resource.
      */
     /// Return the user args below
-    public function show()
+    public function show($userId)
     {
-        return view('users.show');
+
+        $user = $this->userservice->getUser($userId);
+
+        return view('users.show',['user' => $user]);
     }
 
     /**

@@ -1,9 +1,5 @@
-@extends('Blogs.layout')
 
-@section('title','My blog')
-
-@section('content')
-
+<x-user.layout>
 	<x-blog.show :blog=$blog />
+</x-user.layout>
 
-@endsection

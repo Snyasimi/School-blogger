@@ -16,9 +16,11 @@ return new class extends Migration
 		$table->string('username');
 		$table->string('firstname');
 	    $table->string('lastname');
+        $table->string('bio');
 	    $table->string('campus');
 	    $table->string('is_admin')->default('false');
 	    $table->string('phone_number');
+
 
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
