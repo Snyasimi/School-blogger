@@ -8,7 +8,7 @@
 				<a href=""
 					hx-get="{{ route('admin.index') }}"
 					hx-trigger="click,delay:500ms"
-					hx-target="#main-content"
+					hx-target="#dom"
 					hx-swap="outerHTML"
 				>Home</a>
 			</li>
