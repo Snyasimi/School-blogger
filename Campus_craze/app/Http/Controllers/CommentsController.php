@@ -40,7 +40,7 @@ class CommentsController extends Controller
 	    $commentData = $request->validated();
 
 	    
-	    $user = \App\Models\User::where('id',1)->first();
+	    $user = $request->user();
 	    $comment = $this->commentservice->saveComment($user,$commentData);
 		
 	    return redirect()->action(

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Services;
-
-use \App\Models\{User,Posts};
+use DB;
+use \App\Models\{User,Posts,PostLikes};
 
 class PostService {
 
@@ -44,6 +44,31 @@ class PostService {
 		if(!$post) throw new \Exception("Failed to create post\n");
 
 		return $post;
+	}
+
+	public function likePost($userId,$postId)
+	{
+		
+		$like = false;// PostLikes::where('user_id',$userId)->where('post_id',$postId)->first();
+		
+		
+		if($like){
+
+			//throw new Exception("Post already liked");
+			return null;
+		}	
+
+
+		DB::transaction( function () use ($userId,$postId){
+
+			$post = Posts::find($postId);
+			$post->increment('likes',1);
+			//$like = PostLikes::create(['post_id' => $postId,'user_id' => $userId]);
+		});
+		
+		return $like;
+
+	
 	}
 
 	public function reportPost($post_id){

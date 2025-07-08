@@ -22,26 +22,28 @@
 
         <div class="mt-auto flex flex-wrap justify-between items-center gap-2 pt-4 border-t border-gray-200">
             <div class="text-sm text-gray-600">
-                ❤️ {{ $post->likes_count ?? 0 }} Likes
+                ❤️ {{ $post->likes ?? 0 }} Likes
             </div>
 
-            <div class="flex gap-2">
-                {{-- Like Form --}}
-                <form method="POST" action="/blog/like/{{ $post->id }}">
-                    @csrf
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
-                        Like
-                    </button>
-                </form>
-
-                {{-- Bookmark Form --}}
-                <form method="POST" action="/blog/bookmark/{{ $post->id }}">
-                    @csrf
-                    <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">
-                        Bookmark
-                    </button>
-                </form>
-            </div>
+        <div class="flex-1 flex flex-row items-end gap-2  ">
+            {{-- Like Form --}}
+            <form method="POST" action="{{ route('post.like.store',['post' => $post->id ] ) }}">
+	    @csrf
+	    	<input type="number" hidden name="post_id" value={{ $post->id }}>
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm transition">
+                    Like
+                </button>
+            </form>
+    
+            {{-- Bookmark Form --}}
+            <form method="POST" action="{{ route('bookmark.store') }}">
+                @csrf
+                <input type="text" hidden name="post_id" value="{{ $post->id}}"> 
+                <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 text-sm transition">
+                    Bookmark
+                </button>
+            </form>
+        </div>
         </div>
     </div>
 

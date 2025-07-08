@@ -4,7 +4,7 @@
     
     <!-- Image Section -->
     <figure class="">
-        <img src="{{ $post->image }}" alt="Blog Image" class=" h-32 object-fit rounded-xl group-hover:scale-[1.02] transition duration-300">
+        <img src="{{ asset('storage/'.$post->image) }}" alt="Blog Image" class=" h-32 object-fit rounded-xl group-hover:scale-[1.02] transition duration-300">
     </figure>
 
     <!-- Info Section -->
@@ -14,13 +14,14 @@
             <h3 class="text-lg font-semibold group-hover:text-blue-700 transition">{{ $post->title }}</h3>
         <p class="text-sm text-gray-700 line-clamp-3">{{ $post->content }}</p>
         <a href="{{ route('blog.show', $post->id) }}" class="text-blue-600 text-sm underline hover:text-blue-800">Read full post</a>
-        <div class="text-sm text-gray-600 pt-2">❤️ {{ $post->likes_count ?? 0 }} Likes</div>
+        <div class="text-sm text-gray-600 pt-2">❤️ {{ $post->likes ?? 0 }} Likes</div>
         </div>
 
         <div class="flex-1 flex flex-row items-end gap-2  ">
             {{-- Like Form --}}
-            <form method="POST" action="/blog/like/{{ $post->id }}">
-                @csrf
+            <form method="POST" action="{{ route('post.like.store',['post' => $post->id ] ) }}">
+	    @csrf
+	    	<input type="number" hidden name="post_id" value={{ $post->id }}>
                 <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm transition">
                     Like
                 </button>

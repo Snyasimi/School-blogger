@@ -8,7 +8,9 @@ use App\Http\Controllers\{HomeFeedController,
 	AuthController,
 	CommentsController,
 	BookmarksController,
-	PostsController};
+	PostsController,
+	PostLikesController,
+	AdminController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,3 +57,9 @@ Route::resource('user.comments',UserCommentController::class);
 Route::resource("user",UserController::class);
 Route::resource('bookmark',BookmarksController::class);
 Route::resource('blog',PostsController::class);
+Route::resource('post.like',PostLikesController::class);
+
+
+
+Route::resource('admin',AdminController::class);
+

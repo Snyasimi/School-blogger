@@ -19,14 +19,15 @@ return new class extends Migration
         $table->string('bio');
 	    $table->string('campus');
 	    $table->string('is_admin')->default('false');
-	    $table->string('phone_number');
 
+        $table->enum('account_status',['active','flagged','banned'])->default('active');
 
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        $table->string('phone_number');           
+        $table->string('email')->unique();           
+        $table->timestamp('email_verified_at')->nullable();           
+        $table->string('password');            
+        $table->rememberToken();          
+        $table->timestamps();
         });
     }
 

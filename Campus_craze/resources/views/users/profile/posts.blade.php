@@ -1,1 +1,1 @@
-<x-user.profile.posts/>
+<x-user.profile.posts :posts=$posts />

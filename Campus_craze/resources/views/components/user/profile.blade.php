@@ -1,7 +1,6 @@
 
     <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
 
-
 <main class="flex-4" id="main">
 
 	<article>
@@ -13,19 +12,18 @@
     >
   <!-- Section 1: Image -->
   
-  <figure class="w-24 h-24 flex-shrink-0">
+  <figure class="flex-1 flex-shrink-0  border border-gray-900">
     <img
       src="https://images-assets.nasa.gov/image/P25-037-35/P25-037-35~orig.jpg"
       alt="Profile picture"
-      class="w-full h-full object-cover rounded-full border border-gray-200"
+      class="w-full h-full object-cover  border border-gray-200"
     />
   </figure>
 
   <!-- Section 2: Name and nav links -->
-  <div class="flex-1">
+  <div class="flex-3">
     <div>
-
-      <h2 class="text-2xl font-semibold text-gray-900 mb-4">{{ $user->username }}</h2>
+      <h2 class="text-2xl font-semibold text-gray-900">{{ $user->username }}</h2>
       <p>{{$user->campus}}</p>
 
     </div>
@@ -57,7 +55,7 @@
             Comments
           </a>
         </li>
-        <li>
+        {{-- <li>
           <a
             href="#"
             class="text-gray-700 hover:text-blue-600 transition underline-offset-2 flex-1"
@@ -68,7 +66,7 @@
           >
             Followers
           </a>
-        </li>
+        </li> --}}
       </ul>
     </nav>
   </div>

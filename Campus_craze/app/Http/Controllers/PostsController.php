@@ -43,7 +43,7 @@ class PostsController extends Controller
 	    //$user = $request->user();
 	    //#TODO ADD USER OBJ TO BE PASSED
 	    
-	    $user = \App\Models\User::where('id',1)->first();
+	    $user = $request->user();
 	    $post = $this->postservice->savePost($user,$postData);
 
 	    return redirect()->route('blog.show',[

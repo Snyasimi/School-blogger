@@ -1,9 +1,12 @@
-@extends('Blogs.layout')
+{{-- @extends('Blogs.layout')
 
 @section('title','create a blog')
 
 @section('content')
+ 
+--}}
 
+{{-- <x-user.layout> --}}
 <main id="main" class="bg-blue-50 p-4">
 
 		<form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data" class="w-3/4 mx-auto bg-white p-6 rounded-lg shadow space-y-6">
@@ -58,5 +61,8 @@
 
 
 </main>
+{{--
+</x-user.layout>
 
 @endsection
+--}}

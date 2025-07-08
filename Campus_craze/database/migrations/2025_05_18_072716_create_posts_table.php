@@ -19,8 +19,9 @@ return new class extends Migration
 		     
 		     $table->id();
 		     $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
-		$table->string('title');
+		     $table->string('title');
 		     $table->longtext('content');
+             $table->enum('status',['normal','flagged','banned'])->default('normal');
 		     $table->mediumInteger('likes')->default(0);
 		     $table->mediumInteger('reports')->default(0);
 
