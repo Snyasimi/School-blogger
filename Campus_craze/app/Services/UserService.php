@@ -8,6 +8,11 @@ class UserService {
 
 
 
+	public function getUsers()
+	{
+		$users = User::limit(20)->get();
+		return $users;
+	}
     public function getUser($user_id)
     {
 

@@ -63,3 +63,9 @@ Route::resource('post.like',PostLikesController::class);
 
 Route::resource('admin',AdminController::class);
 
+Route::controller(AdminController::class)->group(function(){
+
+	Route::get('manager/search-users','searchUsers')->name('fetchUser');
+	Route::get('manager/searchUser','userSearch')->name('searchUserPage');
+	
+});

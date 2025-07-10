@@ -22,7 +22,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+	    //
+	    $users = $this->userservice->getUsers();
+	    //$users = User::all();
+
+	    return view('admin.search.user-results',['data' => $users]);
     }
 
     /**
