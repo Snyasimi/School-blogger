@@ -35,19 +35,51 @@ class AdminController extends Controller
 	}
 	
 	
-	
+	public function createUser()
+	{
+		return view('admin.management.user.add');
+	}
 
 	public function userSearch()
 	{
 		return view('admin.userSearch');
 	}
 
+	
 	public function searchUsers(Request $request)
 	{
-		$username = $request->query('searchFied');
-		$user = $this->adminservice->seachUser($username['searchField']);
-		return view('admin.search.user-result',['data' => $user]);
+		$username = $request->query('searchField');
+		$users = $this->adminservice->seachUser($username);
+		return view('admin.search.user-results',['data' => $users]);
 	
+	}
+
+	public function showUser($user_id)
+	{
+		
+		$user = $this->adminservice->fetchUser($user_id);
+
+		return view('admin.management.user.show',['user' => $user]);
+	
+	}
+
+	public function blockedUserSearch()
+	{
+		return view('admin.management.user.blocked');
+	}
+
+	public function blockedUsers(Request $request)
+	{
+		 $username = $request->query('searchField');
+
+		 if($username)
+		 {
+			$users = $this->adminservice->seachUser($username);
+			return view('admin.search.user-results',['data' => $users]);
+		 }
+
+		 $blockedUsers = $this->adminservice->getBlockedUsers();
+		 return view('admin.search.user-results',['data' => $blockedUsers]);
 	}
 
 }

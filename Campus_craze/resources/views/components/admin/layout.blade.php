@@ -17,7 +17,7 @@
 		
 	</header>
 
-	<main class="flex flex-row">
+	<main class="flex flex-row gap-4">
 		<x-admin.navigation/>	
 		<div id="main-content" class="flex-3">
 			{{ $slot}}	

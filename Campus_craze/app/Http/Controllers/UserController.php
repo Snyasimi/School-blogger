@@ -49,11 +49,15 @@ class UserController extends Controller
      * Display the specified resource.
      */
     /// Return the user args below
-    public function show($userId)
+    public function show(Request $request,$userId)
     {
 
         $user = $this->userservice->getUser($userId);
 
+        if($request->user()->is_admin){
+
+            return view('admin.management.user.show',['user' => $user]);
+        }
         return view('users.show',['user' => $user]);
     }
 

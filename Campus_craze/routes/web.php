@@ -66,6 +66,11 @@ Route::resource('admin',AdminController::class);
 Route::controller(AdminController::class)->group(function(){
 
 	Route::get('manager/search-users','searchUsers')->name('fetchUser');
-	Route::get('manager/searchUser','userSearch')->name('searchUserPage');
+	Route::get('manager/searchUser','userSearch')->name('admin.searchUser');
+	Route::get('manager/user/show/{user_id}','showUser')->name('admin.showUser');	
+	Route::get('manager/user/create','createUser')->name('admin.createUser');
+	Route::get('manager/user/show-banned','blockedUserSearch')->name('admin.bannedUsers');
+	Route::get('manager/user/banned','blockedUsers')->name('admin.getBannedUsers');
+	
 	
 });

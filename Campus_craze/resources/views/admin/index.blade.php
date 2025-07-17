@@ -1,23 +1,33 @@
 <x-admin.layout>
 	<x-slot:title>
-		Dashborad 1 
+		Dashboard 1
 	</x-slot>
 
-	<div>
-		<div class="analytic component">
-			1
+    <!-- Admin Home Dashboard Header -->
+    <header class="m-8 p-4">
+        <h1 class="text-3xl font-bold text-gray-800">Admin Home Dashboard</h1>
+        <p class="text-gray-500 mt-2">Welcome to your administration dashboard. Here you can view analytics and manage components.</p>
+    </header>
+
+	<!-- Dashboard Analytics Section -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+		<div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
+			<span class="text-3xl font-bold text-blue-700">1</span>
+			<span class="mt-2 text-gray-500">Analytic One</span>
 		</div>
-		<div class="analytic component">
-			1
+		<div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
+			<span class="text-3xl font-bold text-blue-700">1</span>
+			<span class="mt-2 text-gray-500">Analytic Two</span>
 		</div>
-		<div class="analytic component">
-			1
+		<div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
+			<span class="text-3xl font-bold text-blue-700">1</span>
+			<span class="mt-2 text-gray-500">Analytic Three</span>
 		</div>
 	</div>
 	
-	<div>
-		<h2>Component 2</h2>
+	<!-- Another Dashboard Component -->
+	<div class="bg-white rounded-xl shadow p-6">
+		<h2 class="text-xl font-semibold text-gray-800 mb-2">Component 2</h2>
+		<!-- Component 2 content goes here -->
 	</div>
-
-		
 </x-admin.layout>
