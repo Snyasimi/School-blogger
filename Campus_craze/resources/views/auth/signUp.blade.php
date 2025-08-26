@@ -3,7 +3,7 @@
     Sign Up
   </x-slot>
 
-  <main class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-16">
+  <main class="min-h-screen flex items-center justify-center  px-4 py-16">
     <div class="w-full max-w-lg bg-white p-10 rounded-2xl shadow-lg border border-gray-100">
       <h2 class="text-3xl font-bold mb-8 text-center text-blue-700 tracking-tight">Create Your Account</h2>
       <form action="{{ route('register') }}" method="POST" class="space-y-6">
@@ -89,7 +89,7 @@
         <!-- Confirm Password -->
         <div>
           <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-          <input type="password" name="password_confirmation" id="password_confirmation"
+          <input type="password" name="confirm_password" id="password_confirmation"
             class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-200 outline-none transition"
             required>
         </div>

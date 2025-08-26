@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\{User};
+use App\Models\{User,Posts};
 
 
 class AdminService{
@@ -38,6 +38,30 @@ class AdminService{
 		//##TODO REMOVE BELOW CODE
 		$user = User::limit(20)->get();
 		return $user;
+	}
+
+	public function searchPost($keyword)
+	{
+		$keyword = $keyword;
+		$posts = Posts::with(['author'])->where('title','like',"%{$keyword}%")->get();
+
+		return $posts;
+	}
+
+	public function getDeletedBlogs($keyword)
+	{
+		$keyword = $keyword;
+		$posts = Posts::with(['author'])->where('title','like',"%{$keyword}%")->get();
+
+		return $posts;
+	}
+
+	public function getReportedBlogs($keyword)
+	{
+		$keyword = $keyword;
+		$posts = Posts::with(['author'])->where('title','like',"%{$keyword}%")->get();
+
+		return $posts;
 	}
 
 }

@@ -1,0 +1,1 @@
+<x-admin.blog.search-results :tableData="$data" />

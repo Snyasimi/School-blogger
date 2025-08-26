@@ -23,15 +23,31 @@ class PostLikesController extends Controller
 
 	public function store(LikeRequest $request)
 	{
-		$user = $request->user();
-		$post_id = $request->validated()['post_id'];
+		try
+		{
 
-		//$like = $this->postservice->likePost($user,$post_id);
+			$user = $request->user();
+			$post_id = $request->validated()['post_id'];
 
 			$like = $this->postservice->likePost($user,$post_id);
 
+			if($like)
+			{
+				$message="Post liked";
+				return view('notification.alert',['message' =>$message ]);
+			}
 
 
-		return back();
+
+			$message="Post already liked";
+			return view('notification.alert',['message' =>$message ]);
+		}
+		catch(\Exception $e)
+		{
+
+
+			$message="Mmmh, there might be a problem liking that post, we'll get back to you";
+			return view('notification.alert',['message' =>$message ]);
+		}
 	}
 }

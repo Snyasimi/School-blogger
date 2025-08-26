@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Services\UserService;
+use App\Http\Requests\{SignUpRequest,UpdateDetailsRequest};
+use App\Services\{UserService,AuthService};
 
 class UserController extends Controller
 {
 
-    protected $userservice;
+    protected $userservice,$authservice;
 
-    public function __construct(UserService $userservice){
+    public function __construct(UserService $userservice,AuthService $authservice){
 
         $this->userservice = $userservice;
+        $this->authservice = $authservice;
 
     }
     /**
@@ -22,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-	    //
+	    // #TODO this is bad, change this
 	    $users = $this->userservice->getUsers();
 	    //$users = User::all();
 
@@ -40,9 +42,20 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SignUpRequest $request)
     {
-        //
+        $data = $request->validated();
+        $user = $this->authservice->registerNewUser($data);
+
+        dd($user);
+        if($user) {
+    
+            return back()->with('success', 'User created successfully!');
+
+        } else {
+
+            return back()->with('error', 'User creation failed. Please try again.');
+        }
     }
 
     /**
@@ -54,10 +67,6 @@ class UserController extends Controller
 
         $user = $this->userservice->getUser($userId);
 
-        if($request->user()->is_admin){
-
-            return view('admin.management.user.show',['user' => $user]);
-        }
         return view('users.show',['user' => $user]);
     }
 
@@ -65,11 +74,15 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      */
     //RETURN THE USER INJECTION HERE
-    public function edit()
+    public function edit(User $user)
     {
 	    //
+	    if(!$user)
+	    {
+		    $user = Auth::user();
+	    }
 
-	    return view('users.edit');
+	    return view('users.edit',['user' => $user ]);
     }
 
     /**
@@ -78,6 +91,31 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
+    }
+
+    public function updateDetails(UpdateDetailsRequest $request, User $user)
+    {
+	    
+	    if(!$user)
+	    {
+		    $user = Auth::user(); 
+	    }
+	    
+	    $data = $request->validated();
+	    $data['image'] = $request->file('profile_pic');
+
+		//dd($data);	
+	    $status = $this->authservice->updateDetails($user,$data);	    
+	    
+	    if($status['status'])
+	    {
+
+		    return view('notification.alert',[ 'message' => $status['message'] ]);
+	    }
+
+	    return view('notification.alert',['message' => $status['message']]);
+	    
+
     }
 
     /**

@@ -26,6 +26,14 @@ class PostService {
 		
 	
 	}
+	public function searchPost($keyword)
+	{
+		$keyword = $keyword;
+		$posts = Post::with(['author'])->where('title','like',"%{$keyword}%")->get();
+
+		return $posts;
+	}
+	
 	public function fetchPost($post_id)
 	{
 
@@ -46,27 +54,27 @@ class PostService {
 		return $post;
 	}
 
-	public function likePost($userId,$postId)
+	public function likePost($user,$postId)
 	{
 		
-		$like = false;// PostLikes::where('user_id',$userId)->where('post_id',$postId)->first();
+		$like = PostLikes::where('user_id',$user->id)->where('post_id',$postId)->first();
+
+		if($like)
+		{
+			false;
+		}
+
+		$res = $user->likedPosts()->attach($postId);	
+
+
+		// DB::transaction( function () use ($userId,$postId){
+
+		// 	$post = Posts::find($postId);
+		// 	$post->increment('likes',1);
+		// 	//$like = PostLikes::create(['post_id' => $postId,'user_id' => $userId]);
+		// });
 		
-		
-		if($like){
-
-			//throw new Exception("Post already liked");
-			return null;
-		}	
-
-
-		DB::transaction( function () use ($userId,$postId){
-
-			$post = Posts::find($postId);
-			$post->increment('likes',1);
-			//$like = PostLikes::create(['post_id' => $postId,'user_id' => $userId]);
-		});
-		
-		return $like;
+		return true;
 
 	
 	}

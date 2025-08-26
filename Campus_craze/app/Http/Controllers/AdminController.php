@@ -20,20 +20,6 @@ class AdminController extends Controller
 
 		return view('admin.index',['analytics' => $analytics]);
 	}
-	public function show()
-	{
-	}
-	public function destroy()
-	{
-	}
-	public function edit()
-	{
-	}
-	
-	public function create()
-	{
-	}
-	
 	
 	public function createUser()
 	{
@@ -80,6 +66,61 @@ class AdminController extends Controller
 
 		 $blockedUsers = $this->adminservice->getBlockedUsers();
 		 return view('admin.search.user-results',['data' => $blockedUsers]);
+	}
+
+	public function searchPost()
+	{
+		return view('admin.blogs.blogSearch');
+	}
+
+
+	public function fetchPost(Request $request)
+	{
+		$keyword = $request->query('searchField');
+		$posts = $this->adminservice->searchPost($keyword);
+
+		return view('admin.search.blog-results', ['data' => $posts]);
+	}
+
+	public function showBlog()
+	{
+		return view('admin.blogs.view');
+	}
+	
+
+	public function deletedPosts()
+	{
+		return view('admin.blogs.deletedBlogs');
+	}
+
+	public function showDeletedPosts(Request $request)
+
+	{
+		$keyword = $request->query('searchField');
+		$posts = $this->adminservice->getDeletedBlogs($keyword);
+		return view('admin.search.blog-results', ['data' => $posts]);
+	}
+
+	public function reportedPosts()
+	{
+		return view('admin.blogs.reportedBlogs');
+	}
+
+	public function showReportedPosts(Request $request)
+	{
+		$keyword = $request->query('searchField');
+		$posts = $this->adminservice->getReportedBlogs($keyword);
+		
+		return view('admin.search.blog-results', ['data' => $posts]);
+
+	}
+
+	public function generate_reports()
+	{
+
+		//number of posts,users, reported posts, liked posts.
+		// 
+
 	}
 
 }

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 	    Comments::factory(5)->create();
 	    Bookmarks::factory(10)->create();
 	     */
-	    User::factory()->has(Posts::factory(1)->has(Comments::factory(2)))->has(Bookmarks::factory(4))->create();
+	    User::factory(10)->has(Posts::factory(20)->has(Comments::factory(2)))->has(Bookmarks::factory(4))->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

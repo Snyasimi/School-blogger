@@ -19,9 +19,9 @@ class PostsFactory extends Factory
         return [
 		'author_id' => \App\Models\User::factory(),
 		'title' => fake()->title(),
-		'content' => fake()->text(200),
+		'content' => fake()->paragraph(3),
 		'likes' => fake()->numberBetween(5,200),
-        'status' => fake()->randomElement(['normal','flagged','banned']);
+        'status' => fake()->randomElement(['normal','flagged','banned']),
 		'reports' => fake()->numberBetween(1,400),
 		'image' => fake()->randomElement(['https://images-assets.nasa.gov/image/iss073e0080625/iss073e0080625~orig.jpg',
                         'postImages/0f6jr0iOvV0Q9mYoqMCFE4YWmqfdMS0VMj0yD9m2.jpg', 'postImages/oTDCU09zA0WZdThqBsOuRyQLmUUo3hvpkwIM14K6.png', 

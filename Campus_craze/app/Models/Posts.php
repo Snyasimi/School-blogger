@@ -18,9 +18,10 @@ class Posts extends Model
 		return $this->belongsTo(User::class,'author_id');
 	}
 
-	public function liker(){
+	public function liker()
+	{
 
-		return $this->belongsToMany(User::class,'PostLikes');
+		return $this->belongsToMany(User::class,'post_likes','post_id','user_id');
 	}
 
 	

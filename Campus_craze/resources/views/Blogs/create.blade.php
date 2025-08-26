@@ -1,68 +1,62 @@
-{{-- @extends('Blogs.layout')
-
-@section('title','create a blog')
-
-@section('content')
- 
---}}
-
-{{-- <x-user.layout> --}}
-<main id="main" class="bg-blue-50 p-4">
-
-		<form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data" class="w-3/4 mx-auto bg-white p-6 rounded-lg shadow space-y-6">
-		@csrf
-		<h2 class="font-bold text-lg" >Tell us your story</h2>
-
-        {{-- Blog Image --}}
-	    <div>
-		<label for="image" class="block text-sm font-medium text-gray-700">Blog Header Image</label>
-		<input 
-			type="file" 
-			name="image" 
-			id="image" 
-			accept="image/*"
-			class="mt-1 block w-full text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-	   </div>
-
-    {{-- Blog Title --}}
-    <div>
-        <label for="title" class="block text-sm font-medium text-gray-700">Blog Title</label>
+<main id="main" class="min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-12 px-4">
+    <form 
+      method="POST" 
+      action="{{ route('blog.store') }}" 
+      enctype="multipart/form-data" 
+      hsx-swap="outerHTML"
+      hsx-target="body"
+      class="w-full max-w-4xl bg-white p-10 rounded-2xl shadow-2xl border border-blue-100 space-y-8"
+    >
+      @csrf
+      <h2 class="font-bold text-2xl text-blue-900 mb-6 text-center">Tell us your story</h2>
+      
+      {{-- Blog Image --}}
+      <div>
+        <label for="image" class="block text-sm font-medium text-blue-800 mb-1">Blog Header Image</label>
         <input 
-            type="text" 
-            name="title" 
-            id="title" 
-            class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-            required
+          type="file" 
+          name="image" 
+          id="image" 
+          accept="image/*"
+          class="block w-full text-sm text-blue-900 border border-blue-200 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-300 focus:border-blue-400 transition"
         >
-    </div>
-
-    {{-- Blog Content --}}
-    <div>
-        <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+      </div>
+      
+      {{-- Blog Title --}}
+      <div>
+        <label for="title" class="block text-sm font-medium text-blue-800 mb-1">Blog Title</label>
+        <input 
+          type="text" 
+          name="title" 
+          id="title" 
+          class="block w-full p-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-300 focus:border-blue-400 outline-none transition"
+          required
+        >
+      </div>
+      
+      {{-- Blog Content --}}
+      <div>
+        <label for="content" class="block text-sm font-medium text-blue-800 mb-1">Content</label>
         <textarea 
-            name="content" 
-            id="content" 
-            rows="10"
-            class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-            required
+          name="content" 
+          id="editor" 
+          rows="16"
+          class="block w-full p-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-300 focus:border-blue-400 outline-none transition resize-y min-h-[400px]"
+          required
         ></textarea>
-    </div>
-
-    {{-- Submit Button --}}
-    <div class="text-right">
+      </div>
+      
+      {{-- Submit Button --}}
+      <div class="text-right">
         <button 
-            type="submit" 
-            class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
+          type="submit" 
+          class="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white px-7 py-3 rounded-xl font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition"
         >
-            Publish Blog
+          Publish Blog
         </button>
-    </div>
-</form>
-
-
-</main>
-{{--
-</x-user.layout>
-
-@endsection
---}}
+      </div>
+    </form>
+    <script defer>
+      CKEDITOR.replace('editor');
+    </script>
+  </main>

@@ -40,18 +40,8 @@
                    class="block px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition"
                 >Search users</a>
             </li>
-            <li>
-                <span class="block px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition">Manage users</span>
-            </li>
-            <li>
-                <a href="#"
-                   hx-get="{{ route('admin.showUser',['user_id' => 2]) }}"
-                   hx-trigger="click"
-                   hx-target="#main-content"
-                   hx-swap="outerHTML"
-                   class="block px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition"
-                >Get user</a>
-            </li>
+            
+          
 
 			<li>
                 <a href="#"
@@ -63,6 +53,16 @@
                 >Banned users</a>
             </li>
 
+            <li>
+                <a href="#"
+                   hx-get="{{ route('admin.bannedUsers') }}"
+                   hx-trigger="click"
+                   hx-target="#main-content"
+                   hx-swap="outerHTML"
+                   class="block px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition"
+                >Deleted users</a>
+            </li>
+
         </ul>
     </div>
 
@@ -70,10 +70,33 @@
         <h2 class="text-xs font-semibold text-gray-500 uppercase mb-2 tracking-wider">Blog Management</h2>
         <ul class="space-y-1">
             <li>
-                <span class="block px-4 py-2 rounded-md text-gray-400 cursor-not-allowed">Search blogs</span>
+                <a href="#"
+                   hx-get="{{ route('admin.searchPosts') }}"
+                   hx-trigger="click"
+                   hx-target="#main-content"
+                   hx-swap="outerHTML"
+                   class="block px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition"
+                >Search blogs</a>
             </li>
+            
             <li>
-                <span class="block px-4 py-2 rounded-md text-gray-400 cursor-not-allowed">Manage blogs</span>
+                <a href="#"
+                   hx-get="{{ route('admin.reportedPosts') }}"
+                   hx-trigger="click"
+                   hx-target="#main-content"
+                   hx-swap="outerHTML"
+                   class="block px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition"
+                >Reported blogs</a>
+            </li>
+
+            <li>
+                <a href="#"
+                   hx-get="{{ route('admin.deletedPosts') }}"
+                   hx-trigger="click"
+                   hx-target="#main-content"
+                   hx-swap="outerHTML"
+                   class="block px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition"
+                >Deleted blogs</a>
             </li>
         </ul>
     </div>

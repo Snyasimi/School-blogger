@@ -3,10 +3,9 @@
     Login
   </x-slot>
 
-  <main class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-16">
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
-      <!-- Simple, elegant heading without colored banner -->
-      <h1 class="text-2xl font-semibold text-center mb-6 text-gray-900 tracking-tight">
+  <div class="flex items-center justify-center min-h-[70vh]">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 border border-blue-100">
+      <h1 class="text-2xl font-bold text-center mb-6 text-blue-800 tracking-tight">
         Sign in to your account
       </h1>
       <form action="{{ route('authenticate') }}" method="POST" class="space-y-6">
@@ -14,7 +13,7 @@
 
         <!-- Username or Email -->
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">
+          <label for="email" class="block text-sm font-medium text-blue-700">
             Username or Email
           </label>
           <input
@@ -23,7 +22,7 @@
             id="login"
             value="{{ old('login') }}"
             autocomplete="username"
-            class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring focus:border-blue-400 outline-none transition"
+            class="w-full mt-1 p-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition"
             required
           >
           @error('email')
@@ -33,7 +32,7 @@
 
         <!-- Password -->
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">
+          <label for="password" class="block text-sm font-medium text-blue-700">
             Password
           </label>
           <input
@@ -41,7 +40,7 @@
             name="password"
             id="password"
             autocomplete="current-password"
-            class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring focus:border-blue-400 outline-none transition"
+            class="w-full mt-1 p-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition"
             required
           >
           @error('password')
@@ -53,12 +52,12 @@
         <div class="text-center">
           <button
             type="submit"
-            class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold shadow hover:bg-blue-700 transition"
+            class="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white py-3 rounded-xl font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition"
           >
             Login
           </button>
         </div>
       </form>
     </div>
-  </main>
+  </div>
 </x-auth.layout>

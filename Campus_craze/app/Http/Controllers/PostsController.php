@@ -15,7 +15,7 @@ class PostsController extends Controller
 	protected $postservice; 
     public function __construct(PostService $postservice)
    {
-	$this->postservice = $postservice;
+	    $this->postservice = $postservice;
    }
 
     public function index()
@@ -46,8 +46,8 @@ class PostsController extends Controller
 	    $user = $request->user();
 	    $post = $this->postservice->savePost($user,$postData);
 
-	    return redirect()->route('blog.show',[
-		    'blog' => $post['id'] 
+	    return view('Blogs.show',[
+		    'blog' => $post 
 	    ]);
     }	
 
@@ -88,6 +88,17 @@ class PostsController extends Controller
     {
         //
     }
+
+    public function searchBlog()
+    {
+        $keyword = $request->query('keyword');
+
+        $this->postservice->searchPost($keyword);
+
+        return view('');
+    }
+
+
 
     
 }

@@ -16,4 +16,12 @@ class PostLikes extends Model
 
     
 
+    public function user()
+    {
+           
+        return $this->belongsToMany(Like::class, 'role_user_table', 'user_id', 'role_id');
+
+    }
+
+
 }

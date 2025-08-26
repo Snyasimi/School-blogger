@@ -13,7 +13,7 @@
         <table>
 
             @foreach($bookmarks as $bookmark)
-                <x-
+               
 
         </table>
 

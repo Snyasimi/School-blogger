@@ -16,7 +16,8 @@ return new class extends Migration
 		$table->string('username');
 		$table->string('firstname');
 	    $table->string('lastname');
-        $table->string('bio');
+        $table->string('bio')->nullable();
+        $table->string('profile_picture');
 	    $table->string('campus');
 	    $table->string('is_admin')->default('false');
 

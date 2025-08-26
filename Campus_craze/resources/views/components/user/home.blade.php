@@ -1,35 +1,32 @@
 <x-user.layout>
-
-    <main class="flex-4 bg-blue-50 p-4" id="main">
-        <article class="max-w-7xl mx-auto flex flex-col gap-6">
+    <main class="p-4 flex-4 bg-gradient-to-br from-blue-50 via-white to-blue-100  min-h-screen" id="main">
+        <article class="max-w-7xl mx-auto flex flex-col gap-10">
 
             {{-- Trending Posts --}}
             <section>
-                <h2 class="text-3xl font-bold p-4">Trending Posts</h2>
+                <h2 class="text-3xl font-extrabold p-4 text-blue-900">Trending Posts</h2>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     @forelse($trendingPosts as $post)
                         <x-blog.trending :post="$post" />
                     @empty
-                        <p class="text-gray-600 p-2">There are no trending posts. Create one <a href="{{ route('posts.create') }}" class="underline text-blue-600">here</a>.</p>
+                        <p class="text-gray-600 p-2 bg-white rounded-lg shadow">There are no trending posts. Create one <a href="{{ route('posts.create') }}" class="underline text-blue-600">here</a>.</p>
                     @endforelse
                 </div>
             </section>
 
             {{-- More Posts --}}
             <section>
-                <h2 class="text-3xl font-bold p-4">More Posts</h2>
+                <h2 class="text-3xl font-extrabold p-4 text-blue-900">More Posts</h2>
 
-                <div class="flex flex-col flex-wrap gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     @forelse($posts as $pst)
-                        <x-blog.card :post="$pst" />
+                    <x-blog.trending :post="$pst" />
                     @empty
-                        <p class="text-gray-600 p-2">No posts available.</p>
+                        <p class="text-gray-600 p-2 bg-white rounded-lg shadow">No posts available.</p>
                     @endforelse
                 </div>
             </section>
-
         </article>
     </main>
-
 </x-user.layout>

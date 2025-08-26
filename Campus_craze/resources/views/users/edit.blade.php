@@ -1,2 +1,2 @@
 {{-- ADD USER INSTANCE TO COMPONENT--}}
-<x-user.settings/>
+<x-user.settings :user="$user" />

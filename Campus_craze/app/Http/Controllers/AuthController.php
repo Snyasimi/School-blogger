@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\AuthService;
 use \Illuminate\Support\Facades\Auth;
 
-use App\Http\Requests\{SignUpRequest,LoginRequest,LogoutRequest};
+use App\Http\Requests\{SignUpRequest, LoginRequest, LogoutRequest, UpdateSecurityDetailsRequest};
 
 class AuthController extends Controller
 {
@@ -41,7 +41,7 @@ class AuthController extends Controller
 
 		if(!$user)
 		{
-			return back()->with('message','Failed to create account');
+			dd($user);
 		}
 
 		return redirect()->action([HomeFeedController::class,'index']);
@@ -68,6 +68,17 @@ class AuthController extends Controller
 
 		])->onlyInput('email');
 
+	}
+
+	public function updateSecurityDetails(UpdateSecurityDetailsRequest $request)
+	{
+		$user = $request->user();
+
+		$data = $request->validated();
+
+		$status = $this->authservice->updateSecurityDetails($user,$data);
+
+		return view('notification.alert',['message' => $status['message']]);
 	}
 
 	public function logout(LogoutRequest $request)

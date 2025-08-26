@@ -1,4 +1,4 @@
-<div id="main-content" class="flex-3 mx-auto p-6 bg-white rounded-lg shadow-md mt-8">
+<div id="main-content" class="flex-3 mx-auto p-4 sm:p-6 bg-white rounded-lg shadow-md mt-8 w-full max-w-xl">
     {{-- Success Notification --}}
     @if (session('success'))
         <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
@@ -13,16 +13,17 @@
         </div>
     @endif
 
-    <h2 class="text-2xl font-medium mb-6">Create New User</h2>
+    <h2 class="text-2xl font-medium mb-6 text-center">Create New User</h2>
     <form 
         hx-post="{{ route('user.store') }}"
         method="POST"
         autocomplete="off"
+        class="space-y-4"
     >
         @csrf
 
         <!-- First & Last Name Side by Side -->
-        <div class="mb-4 flex flex-col sm:flex-row gap-4">
+        <div class="flex flex-col sm:flex-row gap-4">
             <div class="w-full">
                 <label for="firstname" class="block text-sm mb-1">First Name</label>
                 <input type="text" name="firstname" id="firstname" 
@@ -44,7 +45,7 @@
         </div>
 
         <!-- Username -->
-        <div class="mb-4">
+        <div>
             <label for="username" class="block text-sm mb-1">Username</label>
             <input type="text" name="username" id="username" 
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition"
@@ -55,7 +56,7 @@
         </div>
 
         <!-- Bio -->
-        <div class="mb-4">
+        <div>
             <label for="bio" class="block text-sm mb-1">Bio</label>
             <textarea name="bio" id="bio" 
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition"
@@ -66,7 +67,7 @@
         </div>
 
         <!-- Campus -->
-        <div class="mb-4">
+        <div>
             <label for="campus" class="block text-sm mb-1">Campus</label>
             <input type="text" name="campus" id="campus"
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition" 
@@ -77,7 +78,7 @@
         </div>
 
         <!-- Is Admin -->
-        <div class="mb-4">
+        <div>
             <label for="is_admin" class="block text-sm mb-1">Is Admin?</label>
             <select name="is_admin" id="is_admin"
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition"
@@ -91,7 +92,7 @@
         </div>
 
         <!-- Phone Number -->
-        <div class="mb-4">
+        <div>
             <label for="phone_number" class="block text-sm mb-1">Phone Number</label>
             <input type="text" name="phone_number" id="phone_number"
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition" 
@@ -102,7 +103,7 @@
         </div>
 
         <!-- Email -->
-        <div class="mb-4">
+        <div>
             <label for="email" class="block text-sm mb-1">Email</label>
             <input type="email" name="email" id="email"
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition" 
@@ -113,7 +114,7 @@
         </div>
 
         <!-- Password -->
-        <div class="mb-4">
+        <div>
             <label for="password" class="block text-sm mb-1">Password</label>
             <input type="password" name="password" id="password"
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition">
@@ -123,7 +124,7 @@
         </div>
         
         <!-- Confirm Password -->
-        <div class="mb-6">
+        <div>
             <label for="password_confirmation" class="block text-sm mb-1">Confirm Password</label>
             <input type="password" name="password_confirmation" id="password_confirmation"
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition">
