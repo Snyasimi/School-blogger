@@ -1,7 +1,10 @@
 <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
 
-<main id="main" class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10 px-3 min-h-screen">
-	<article class="w-full max-w-4xl p-10 bg-white rounded-2xl shadow-2xl border border-blue-100">
+<main id="main-content" class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 py-10 px-3 min-h-screen">
+	
+    <div id="notification"></div>
+
+    <article class="w-full max-w-4xl p-10 bg-white rounded-2xl shadow-2xl border border-blue-100">
 	  <figure class="bg-blue-50 rounded-xl overflow-hidden aspect-video mb-6 border border-blue-100">
 		<img class="w-full object-cover" src="{{ asset('storage/'.$blog->image) }}" alt="blog image header">
 		<figcaption class="text-center text-xs text-blue-500 py-2">"This is the caption"</figcaption>
@@ -32,57 +35,50 @@
 		  <!-- Right: Like and Bookmark forms -->
 		  <div class="flex gap-2">
 			<!-- Like Form -->
-			<form 
-			hx-post="{{ route('post.like.store', ['post' => $blog->id]) }}"
-			hx-target="#notification"
-			hx-swap="innerHTML"
-			>
-			@csrf
-			<input type="number" hidden name="post_id" value="{{ $blog->id }}">
-			<button type="submit"
-			class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 hover:scale-105 transition-all text-sm font-semibold">
-			Like
-		</button>
-	</form>
+			          {{-- Delete (set status to "deleted") --}}
+<form 
+hx-post="{{ route('admin.blog.updateStatus', ['blog' => $blog->id]) }}"
+hx-target="#notification"
+hx-swap="outerHTML"
+class="inline"
+>
+@csrf
+<input type="hidden" name="status" value="flagged">
+<input type="submit"
+       value="Flag"
+       class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition cursor-pointer"
+>
+</form>
 
+{{-- Ban (set status to "banned") --}}
+<form 
+hx-post="{{ route('admin.blog.updateStatus', ['blog' => $blog->id]) }}"
+hx-target="#notification"
+hx-swap="outerHTML"
+class="inline"
+>
+@csrf
+<input type="hidden" name="status" value="banned">
+<input type="submit"
+       value="Ban"
+       class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition cursor-pointer"
+>
+</form>
 
-		{{-- Bookmark Form --}}
-		
-	<form 
-		hx-post="{{ route('bookmark.store') }}"   
-		hx-trigger="submit"  
-		hx-target="#notification"    
-		hx-swap="outerHTML"   
-		class="w-full sm:w-auto"
-		>
-
-		@csrf
-
-		<input type="text" hidden name="post_id" value="{{ $blog->id }}">
-
-		<button type="submit"
-		class="w-full sm:w-auto px-5 py-2 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 hover:scale-105 transition-all text-sm font-semibold">
-
-	Bookmark
-
-	</button>
-
-
-
-	</form>
-
-	<form 
-			hx-post="{{ route('post.report.store', ['post' => $blog->id]) }}"
-			hx-target="#notification"
-			hx-swap="innerHTML"
-			>
-			@csrf
-			<input type="number" hidden name="post_id" value="{{ $blog->id }}">
-			<button type="submit"
-			class="px-5 py-2 bg-amber-900 text-white rounded-lg shadow hover:bg-yellow-700 hover:scale-105 transition-all text-sm font-semibold">
-			Report
-		</button>
-	</form>
+{{-- Restore (set status to "normal") --}}
+<form 
+hx-post="{{ route('admin.blog.updateStatus', ['blog' => $blog->id]) }}"
+hx-target="#notification"
+hx-swap="outerHTML"
+class="inline"
+>
+@csrf
+<input type="hidden" name="status" value="normal">
+<input type="submit"
+       value="Restore"
+       class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition cursor-pointer"
+>
+</form>
 
 
 

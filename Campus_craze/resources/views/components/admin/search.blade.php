@@ -1,6 +1,8 @@
 <!-- If you do not have a consistent goal in life, you can not live it in a consistent way. - Marcus Aurelius -->
 
 <div id="main-content" class="flex-1 p-6 bg-gray-50 min-h-screen rounded-lg shadow-md flex-3">
+	<div id="notification"></div>
+	
 	<article class="flex flex-col gap-6">
 		<h2 class="text-2xl font-bold text-gray-800 mb-4">{{ $title }}</h2>
 	

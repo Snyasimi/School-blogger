@@ -17,10 +17,14 @@
             <td class="text-center p-3 border border-gray-400">{{ $bookmark->post->likes }}</td>
             <td class="text-center p-3 border border-gray-400">
                 <button 
-                    hx-delete="{{ route('bookmark.destroy', ['bookmark' => $bookmark->id]) }}"
+                    hx-post="{{ route('deletebookmark', ['bookmark' => $bookmark->id]) }}"
                     class="w-full sm:w-auto px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition duration-200 shadow-sm"
                     hx-trigger="click"
+                    hx-swap="outerHTML"
+                    hx-target="#notification"
+                    
                 >
+                dd
                     Delete
                 </button>
             </td>

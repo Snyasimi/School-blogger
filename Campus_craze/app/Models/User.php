@@ -68,7 +68,7 @@ class User extends Authenticatable
     
     public function reportedPosts()    
     {
-		return $this->hasMany(Posts::class,'PostReports');
+		return $this->belongsToMany(Posts::class,'post_reports','user_id','post_id');
 
     }
 

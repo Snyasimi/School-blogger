@@ -59,6 +59,10 @@ class AuthController extends Controller
 			
 			$request->session()->regenerate();
 
+			if($user->is_admin)
+			{
+				return redirect()->intended(route('admin.index'));
+			}
 			return redirect()->intended(route('homefeed'));
 		}
 

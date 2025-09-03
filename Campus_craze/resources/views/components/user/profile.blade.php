@@ -1,6 +1,6 @@
 <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
 
-<main class="flex flex-col flex-2 md:px-12 py-8 w-full max-w-5xl mx-auto">
+<main id="main-content" class="flex flex-col flex-2 md:px-12 py-8 w-full max-w-5xl mx-auto">
   <article>
 
     <!-- Profile Section -->

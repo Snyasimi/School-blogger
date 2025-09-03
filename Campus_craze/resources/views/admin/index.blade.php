@@ -9,19 +9,21 @@
         <p class="text-gray-500 mt-2">Welcome to your administration dashboard. Here you can view analytics and manage components.</p>
     </header>
 
-	<!-- Dashboard Analytics Section -->
+	<!-- Dash
+		board Analytics Section -->
+		
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
 		<div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
-			<span class="text-3xl font-bold text-blue-700">1</span>
-			<span class="mt-2 text-gray-500">Analytic One</span>
+			<span class="text-3xl font-bold text-blue-700">Total number of users</span>
+			<span class="mt-2 text-gray-500">{{ $analytics['totalUsers'] }}</span>
 		</div>
 		<div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
-			<span class="text-3xl font-bold text-blue-700">1</span>
-			<span class="mt-2 text-gray-500">Analytic Two</span>
+			<span class="text-3xl font-bold text-blue-700">Total number of blogs</span>
+			<span class="mt-2 text-gray-500">{{ $analytics['totalBlogs'] }}</span>
 		</div>
 		<div class="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center">
-			<span class="text-3xl font-bold text-blue-700">1</span>
-			<span class="mt-2 text-gray-500">Analytic Three</span>
+			<span class="text-3xl font-bold text-blue-700">Reported blogs</span>
+			<span class="mt-2 text-gray-500">{{ $analytics['reportedBlogs'] }}</span>
 		</div>
 	</div>
 	

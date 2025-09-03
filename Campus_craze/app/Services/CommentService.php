@@ -18,4 +18,17 @@ class CommentService{
 
 		return $comment;
 	}
+
+	public function getUserComments($user)
+	{
+		$user =User::with(['comments'])->find($user);
+
+		//$comments = Comments::with()
+		if($user)
+		{
+			return $user;
+		}
+
+		return false;
+	}
 }

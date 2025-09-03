@@ -52,11 +52,16 @@ class BookmarksController extends Controller
         $bookmark = $this->bookmarkservice->store($user,$post['post_id']);
 
         if($bookmark){
-            return back()->with('message','Bookmark saved');
+            $message = "Bookmark added";
+            //return back()->with('message','Bookmark saved');
         }
         else {
-            return back()->with('message','Failed to bookmark');
+            $message = "Bookmark not saved";
+            //return back()->with('message','Failed to bookmark');
         }
+
+    
+        return view('notification.alert',['message' =>$message ]);
     }
 
     /**
@@ -92,5 +97,15 @@ class BookmarksController extends Controller
         $bookmarks->delete();
 
         return redirect()->action([BookmarksController::class,'index']);
+    }
+
+    public function del(Bookmarks $bookmark)
+    {
+        $bookmark->delete();
+
+        $message = "Bookmark deleted";
+
+        return view('notification.alert',['message' =>$message ]);
+
     }
 }

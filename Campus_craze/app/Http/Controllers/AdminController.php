@@ -60,7 +60,8 @@ class AdminController extends Controller
 
 		 if($username)
 		 {
-			$users = $this->adminservice->seachUser($username);
+			//$users = $this->adminservice->seachBlockedUser($username);
+			$users = $this->adminservice->getBlockedUsers();
 			return view('admin.search.user-results',['data' => $users]);
 		 }
 
@@ -82,11 +83,47 @@ class AdminController extends Controller
 		return view('admin.search.blog-results', ['data' => $posts]);
 	}
 
-	public function showBlog()
+	public function showBlog($blog)
 	{
-		return view('admin.blogs.view');
+		$blog = $this->adminservice->getBlog($blog);
+
+		return view('admin.blogs.show',['blog' => $blog]);
+	}
+
+	public function updateUserStatus(Request $request,$user)
+	{
+		$status = $request->validate([
+			'status' => ['required']
+		]);
+
+		$res = $this->adminservice->updateUserStatus($user,$status);
+
+		if($res)
+		{
+			$message = 'user updated'; 
+			return view('notification.alert',['message' => $message]);
+
+		}
+
+		$message = 'user not updated'; 
+
+		
+		return view('notification.alert',['message' => $message]);
+
 	}
 	
+	public function updateStatus(Request $request,$blog)
+	{
+		$status = $request->validate([
+			'status' => ['required']
+		]);
+
+		$res = $this->adminservice->updateBlogStatus($blog,$status);
+
+		$message = 'Blog updated'; 
+
+		return view('notification.alert',['message' => $message]);
+	}
 
 	public function deletedPosts()
 	{

@@ -33,6 +33,18 @@ Class BookmarkService {
 
 	}
 
+	public function delete($bookmark_id)
+	{
+		$deleted = Bookmarks::destroy($bookmark_id);
+		if ($deleted) {
+			// Success
+			return true;
+		} else {
+			// Failure
+			return false;
+		}
+	}
+
 
 
 }

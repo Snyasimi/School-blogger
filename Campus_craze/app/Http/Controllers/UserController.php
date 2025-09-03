@@ -47,14 +47,16 @@ class UserController extends Controller
         $data = $request->validated();
         $user = $this->authservice->registerNewUser($data);
 
-        dd($user);
+       // dd($user);
         if($user) {
     
-            return back()->with('success', 'User created successfully!');
+            $message = "User created";
+            return view('notification.alert',['message' => $message]);
 
         } else {
 
-            return back()->with('error', 'User creation failed. Please try again.');
+            $message = "Failed to create user";
+            return view('notification.alert',['message' => $message]);
         }
     }
 

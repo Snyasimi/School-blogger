@@ -1,10 +1,10 @@
-<div id="main-content" class="flex-3 mx-auto p-4 sm:p-6 bg-white rounded-lg shadow-md mt-8 w-full max-w-xl">
+<div id="main-content" class="flex-3 mx-auto p-4 sm:p-6 bg-white rounded-lg shadow-md mt-8 ">
     {{-- Success Notification --}}
-    @if (session('success'))
-        <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-            {{ session('success') }}
+    
+        <div id="notification">
+         
         </div>
-    @endif
+   
 
     {{-- Error Notification --}}
     @if (session('error'))
@@ -15,10 +15,14 @@
 
     <h2 class="text-2xl font-medium mb-6 text-center">Create New User</h2>
     <form 
+    {{-- FIX THIS SUBMISSION --}}
         hx-post="{{ route('user.store') }}"
         method="POST"
         autocomplete="off"
         class="space-y-4"
+        hx-target="#notification"
+        hx-swap="outerHTML"
+        w-full
     >
         @csrf
 
@@ -56,7 +60,7 @@
         </div>
 
         <!-- Bio -->
-        <div>
+        {{-- <div>
             <label for="bio" class="block text-sm mb-1">Bio</label>
             <textarea name="bio" id="bio" 
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition"
@@ -64,7 +68,7 @@
             @error('bio')
                 <span class="text-red-600 text-xs">{{ $message }}</span>
             @enderror
-        </div>
+        </div> --}}
 
         <!-- Campus -->
         <div>
@@ -126,13 +130,13 @@
         <!-- Confirm Password -->
         <div>
             <label for="password_confirmation" class="block text-sm mb-1">Confirm Password</label>
-            <input type="password" name="password_confirmation" id="password_confirmation"
+            <input type="password" name="confirm_password" id="password_confirmation"
                 class="w-full border border-gray-400 bg-gray-50 rounded px-3 py-2 focus:outline-none focus:border-blue-400 transition">
             @error('password_confirmation')
                 <span class="text-red-600 text-xs">{{ $message }}</span>
             @enderror
         </div>
 
-        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">Create User</button>
+        <input type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">Create User</input>
     </form>
 </div>

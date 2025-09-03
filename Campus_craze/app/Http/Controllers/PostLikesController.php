@@ -46,7 +46,7 @@ class PostLikesController extends Controller
 		{
 
 
-			$message="Mmmh, there might be a problem liking that post, we'll get back to you";
+			$message= "Having trouble liking the post";
 			return view('notification.alert',['message' =>$message ]);
 		}
 	}

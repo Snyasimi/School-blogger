@@ -1,17 +1,17 @@
 <?php
 
-namespace App\View\Components\User\Profile;
+namespace App\View\Components\Admin\Blog;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Comments extends Component
+class Show extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public $comment)
+    public function __construct(public $blog)
     {
         //
     }
@@ -21,6 +21,6 @@ class Comments extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.user.profile.comments');
+        return view('components.admin.blog.show');
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\{HomeFeedController,
 	BookmarksController,
 	PostsController,
 	PostLikesController,
+	PostReportsController,
 	AdminController};
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +69,14 @@ Route::resource("user",UserController::class);
 Route::resource('bookmark',BookmarksController::class);
 Route::resource('blog',PostsController::class);
 Route::resource('post.like',PostLikesController::class);
+Route::resource('post.report',PostReportsController::class);
 
+Route::controller(BookmarksController::class)->group( function(){
+
+	Route::post('bookmark/del/{bookmark}','del')->name('deletebookmark');
+
+
+});
 
 
 Route::resource('admin',AdminController::class);
@@ -82,15 +90,18 @@ Route::controller(AdminController::class)->group(function(){
 
 	Route::get('manager/user/show-banned','blockedUserSearch')->name('admin.bannedUsers');
 	Route::get('manager/user/banned','blockedUsers')->name('admin.getBannedUsers');
+	Route::post('manager/user/{user}/update-status','updateUserStatus')->name('admin.user.updateStatus');
 
 	Route::get('manager/blog/search','searchPost')->name('admin.searchPosts');
 	Route::get('manager/blog/show-blogs','fetchPost')->name('admin.getPosts');
-
+	Route::get('manager/blog/{blog}/','showBlog')->name('admin.showBlog');
 	Route::get('manager/blogs/reported','reportedPosts')->name('admin.reportedPosts');
 	Route::get('manager/blogs/show-reported','showReportedPosts')->name('admin.getReportedPosts');
 
 	Route::get('manager/blogs/deleted','deletedPosts')->name('admin.deletedPosts');
 	Route::get('manager/blogs/show-deleted','showDeletedPosts')->name('admin.getDeletedPosts');
+
+	Route::post('manager/blogs/{blog}/update-status','updateStatus')->name('admin.blog.updateStatus');
 
 	
 	

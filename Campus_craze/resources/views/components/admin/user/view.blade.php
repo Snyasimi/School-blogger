@@ -1,5 +1,5 @@
 <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
-<div id="main" class="p-6 bg-gray-50 min-h-screen rounded-lg shadow-md flex flex-col gap-8 flex-3">
+<div id="main-content" class="p-6 bg-gray-50 min-h-screen rounded-lg shadow-md flex flex-col gap-8 flex-3">
 
     <!-- User Profile Header -->
     <h3 class="text-2xl font-bold text-gray-800 mb-2">{{$user->username}}'s Profile</h3>

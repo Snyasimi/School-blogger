@@ -2,7 +2,7 @@
 
 namespace App\Services;
 use DB;
-use \App\Models\{User,Posts,PostLikes};
+use \App\Models\{User,Posts,PostLikes,PostReports};
 
 class PostService {
 
@@ -64,24 +64,46 @@ class PostService {
 			false;
 		}
 
-		$res = $user->likedPosts()->attach($postId);	
+			
 
 
-		// DB::transaction( function () use ($userId,$postId){
+		DB::transaction( function () use ($user,$postId){
 
-		// 	$post = Posts::find($postId);
-		// 	$post->increment('likes',1);
-		// 	//$like = PostLikes::create(['post_id' => $postId,'user_id' => $userId]);
-		// });
+			$post = Posts::find($postId);
+			$post->increment('likes',1);
+			//$like = PostLikes::create(['post_id' => $postId,'user_id' => $userId]);
+			$res = $user->likedPosts()->attach($postId);
+		});
 		
 		return true;
 
 	
 	}
 
-	public function reportPost($post_id){
+	public function reportPost($user,$postId)
+	{
+		
+		$report = PostReports::where('user_id',$user->id)->where('post_id',$postId)->first();
+
+		if($report)
+		{
+			false;
+		}
 
 			
+
+
+		DB::transaction( function () use ($user,$postId){
+
+			Posts::where('id', $postId)->increment('reports', 1);
+			//$like = PostLikes::create(['post_id' => $postId,'user_id' => $userId]);
+			$res = $user->reportedPosts()->attach($postId);
+		});
+		
+		return true;
+
+	
 	}
+
 
 }

@@ -12,6 +12,7 @@
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-gradient-to-r from-slate-50 via-blue-100 to-blue-50 shadow-md border-b border-slate-200 flex items-center justify-between py-6 px-8">
     <h1 class="text-4xl font-extrabold text-blue-900">Campus Craze</h1>
+    
     <nav class="flex gap-4">
       <a href="#features" class="text-blue-900 font-semibold px-5 py-2 rounded-xl hover:bg-blue-500 hover:text-white transition">Features</a>
       <a href="#about" class="text-blue-900 font-semibold px-5 py-2 rounded-xl hover:bg-blue-500 hover:text-white transition">About</a>
@@ -19,6 +20,7 @@
       <a href="{{ route('loginPage') }}" class="bg-blue-600 text-white px-5 py-2 rounded-xl font-semibold shadow hover:bg-blue-700 transition">Login</a>
 
     </nav>
+    
   </header>
 
   <!-- Hero -->

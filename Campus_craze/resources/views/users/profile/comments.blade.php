@@ -1,1 +1,1 @@
-<x-user.profile.comments/>
+<x-user.profile.comments :comment=$comments/>

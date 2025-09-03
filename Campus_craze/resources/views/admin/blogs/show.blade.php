@@ -1,0 +1,1 @@
+<x-admin.blog.show :blog=$blog />

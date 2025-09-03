@@ -46,14 +46,27 @@
             </form>
         
                 {{-- Bookmark Form --}}
-                <form method="POST" action="{{ route('bookmark.store') }}">
-                    @csrf
-                    <input type="text" hidden name="post_id" value="{{ $post->id }}">
-                    <button type="submit"
-                            class="px-5 py-2 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 hover:scale-105 transition-all text-sm font-semibold">
-                        Bookmark
-                    </button>
-                </form>
+                <form  
+            hx-post="{{ route('bookmark.store') }}"   
+            hx-trigger="submit"  
+            hx-target="#notification"    
+            hx-swap="outerHTML"   
+            class="w-full sm:w-auto"
+            >
+
+            @csrf
+
+            <input type="text" hidden name="post_id" value="{{ $post->id }}">
+
+            <button type="submit"
+            class="w-full sm:w-auto px-5 py-2 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 hover:scale-105 transition-all text-sm font-semibold">
+
+            Bookmark
+
+        </button>
+
+    
+        </form>
             </div>
         </div>
     </div>
