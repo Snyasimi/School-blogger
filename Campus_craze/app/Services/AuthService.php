@@ -25,7 +25,10 @@ class AuthService{
 	public function registerNewUser(array $userData )
 	{
 
-		
+/*
+		$postImagePath = $postData['image']->store('postImages','public');
+	    $postData['image'] = $postImagePath;
+		*/
 
 		$userData['password'] = bcrypt($userData['confirm_password']);
 		$userData['profile_picture'] = 'None';

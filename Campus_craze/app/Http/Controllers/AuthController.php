@@ -59,7 +59,7 @@ class AuthController extends Controller
 			
 			$request->session()->regenerate();
 
-			if($user->is_admin)
+			if($user->is_admin == 1)
 			{
 				return redirect()->intended(route('admin.index'));
 			}

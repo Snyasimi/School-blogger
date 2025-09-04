@@ -18,7 +18,7 @@ class HomeFeedController extends Controller
 	//
 	public function index(){
 
-		$trending_posts = $this->postservice->getTrendingPosts(3);
+		$trending_posts = $this->postservice->getTrendingPosts(30);
 		$posts = $this->postservice->getPosts();
 		return view('users.home',['trendingPosts' => $trending_posts , 'posts' => $posts ]);
 	}

@@ -12,7 +12,7 @@
       <!-- Section 1: Image -->
       <figure class="flex-shrink-0 self-center md:self-start border-2 border-gray-300 rounded-full overflow-hidden h-40 w-40 bg-gray-100 shadow">
         <img
-          src="{{ $user->image ?? 'https://ui-avatars.com/api/?name=' . urlencode($user->username) }}"
+          src="{{ asset('storage/'.$user->profile_picture)}}"
           alt="Profile picture of {{ $user->username }}"
           class="h-full w-full object-cover rounded-full"
         />

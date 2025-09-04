@@ -14,7 +14,7 @@
 <body class="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 text-gray-800">
 
     <header class="sticky top-0 z-50 w-full bg-gradient-to-r from-slate-50 via-blue-100 to-blue-50 shadow-md border-b border-slate-200 flex flex-col md:flex-row items-center justify-between py-6 px-8">
-        <h1 class="text-4xl font-extrabold text-blue-900 mb-4 md:mb-0">Campus Craze</h1>
+        <h1 class="text-4xl font-extrabold text-green-900 mb-4 md:mb-0">Campus Blog</h1>
         <nav class="w-full md:w-auto">
           <ul class="flex flex-wrap gap-2 md:gap-4 items-center justify-end">
             <li>
@@ -30,7 +30,7 @@
            
             @if(Auth::user())
 
-            <li>
+            {{-- <li>
                 <a href=""
                    class="text-blue-900 font-semibold px-5 py-2 rounded-xl hover:bg-blue-500 hover:text-white transition"
                    hx-trigger="click"
@@ -39,7 +39,7 @@
                    hx-target="main">
                   Campus news
                 </a>
-              </li>
+              </li> --}}
               <li>
                 <a href=""
                    class="text-blue-900 font-semibold px-5 py-2 rounded-xl hover:bg-blue-500 hover:text-white transition"
@@ -102,7 +102,7 @@
           </ul>
         </nav>
       </header>
-	<div id="notification" >1</div>
+	<div id="notification" ></div>
 
   <main class="flex flex-col flex-2 md:px-12 py-8 w-full max-w-5xl mx-auto">
     {{ $slot }}

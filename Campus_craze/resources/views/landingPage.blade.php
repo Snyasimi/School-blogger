@@ -15,7 +15,6 @@
     
     <nav class="flex gap-4">
       <a href="#features" class="text-blue-900 font-semibold px-5 py-2 rounded-xl hover:bg-blue-500 hover:text-white transition">Features</a>
-      <a href="#about" class="text-blue-900 font-semibold px-5 py-2 rounded-xl hover:bg-blue-500 hover:text-white transition">About</a>
       <a href="{{ route('signUpPage') }}" class="bg-blue-600 text-white px-5 py-2 rounded-xl font-semibold shadow hover:bg-blue-700 transition">Sign Up</a>
       <a href="{{ route('loginPage') }}" class="bg-blue-600 text-white px-5 py-2 rounded-xl font-semibold shadow hover:bg-blue-700 transition">Login</a>
 

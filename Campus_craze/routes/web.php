@@ -103,6 +103,8 @@ Route::controller(AdminController::class)->group(function(){
 
 	Route::post('manager/blogs/{blog}/update-status','updateStatus')->name('admin.blog.updateStatus');
 
+	Route::get('manager/generate-reports','generate_reports')->name('generateReports');
+
 	
 	
 });

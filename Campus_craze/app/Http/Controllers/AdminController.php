@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\AdminService;
+use App\Models\{User,Posts};
+use App\Services\{AdminService,PostService};
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
-	protected $adminservice;
-	public function __construct(AdminService $adminservice)
+	protected $adminservice,$postservice;
+	public function __construct(AdminService $adminservice,PostService $postservice)
 	{
 		$this->adminservice = $adminservice;
+		$this->postservice = $postservice;
 	}
 
 	public function index()
@@ -18,7 +21,10 @@ class AdminController extends Controller
 
 		$analytics = $this->adminservice->getAnalytics();
 
-		return view('admin.index',['analytics' => $analytics]);
+		$trending_posts = $this->postservice->getTrendingPosts(6);
+		
+
+		return view('admin.index',['analytics' => $analytics, 'trendingPosts' => $trending_posts ]);
 	}
 	
 	public function createUser()
@@ -152,12 +158,29 @@ class AdminController extends Controller
 
 	}
 
-	public function generate_reports()
-	{
 
-		//number of posts,users, reported posts, liked posts.
-		// 
 
-	}
+	public function generate_reports(){
+
+		$totalUsers = User::count();
+        $totalBlogs = Posts::count();
+        $bannedBlogs = Posts::with(['author'])->where('status', 'banned')->get();
+        $bannedUsers = User::where('account_status', 'banned')->get();
+        $activeBlogs = Posts::with(['author'])->where('status', 'active')->get();
+
+        $pdf = Pdf::loadView('admin.site-reports', [
+            'totalUsers' => $totalUsers,
+            'totalBlogs' => $totalBlogs,
+            'bannedBlogs' => $bannedBlogs,
+            'bannedUsers' => $bannedUsers,
+            'activeBlogs' => $activeBlogs,
+        ]);
+
+        $pdf->setPaper('A4', 'portrait');
+
+        return $pdf->download('site-reports.pdf');
+    }
+	
+		
 
 }
