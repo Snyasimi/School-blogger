@@ -12,7 +12,7 @@ Class BookmarkService {
 	public function getBookmarksBy(User $user)
 	{
 
-		$bookmarks = $user->bookmarks()->with('user')->get();
+		$bookmarks = $user->bookmarks();//->with('user')->get();
 
 		//$post_ids = Bookmarks::with(['user'])->where('user_id',$user_id)->pluck('post_id')->toArray();
 
